@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:56:55 by blinnea           #+#    #+#             */
-/*   Updated: 2020/03/12 20:27:22 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/06/28 19:57:22 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,11 @@ char	*ft_strstr(const char *haystack, const char *needle);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
+/*
+** Skips all symbols which are satisfy function cmp or doesn't satisfy
+** depends of negation value (0 or any other).
+*/
+void	ft_strskip(char **str, int (*cmp)(int), int negation);
 
 #endif

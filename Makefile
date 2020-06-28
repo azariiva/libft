@@ -6,7 +6,7 @@
 #    By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 17:37:07 by blinnea           #+#    #+#              #
-#    Updated: 2020/03/19 16:25:57 by blinnea          ###   ########.fr        #
+#    Updated: 2020/06/28 19:50:52 by blinnea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ STRFILES =	ft_strnew ft_strdel ft_strclr ft_striter ft_striteri ft_strlen \
 			ft_strdup ft_strcpy ft_strmap ft_strmapi ft_strequ ft_strnequ \
 			ft_strsub ft_strjoin ft_strtrim ft_strncpy ft_strcat ft_strncat \
 			ft_strlcat ft_strchr ft_strrchr ft_strstr ft_strnstr ft_strcmp \
-			ft_strncmp ft_strsplit
+			ft_strncmp ft_strsplit ft_strskip
 CTPFILES =	ft_isalnum ft_isascii ft_isprint ft_islower ft_isupper ft_toupper \
 			ft_tolower ft_isblank ft_iscntrl ft_isalpha ft_isgraph ft_isspace \
 			ft_ispunct ft_isxdigit ft_isdigit

@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_strskip.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 17:39:16 by blinnea           #+#    #+#             */
-/*   Updated: 2020/06/28 16:52:09 by blinnea          ###   ########.fr       */
+/*   Created: 2020/06/28 19:51:37 by blinnea           #+#    #+#             */
+/*   Updated: 2020/06/28 19:55:46 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 /*
-** Takes as a parameter the address of a memory area that needs to be freed
-** with free(3), then puts the pointer to NULL.
+** Skips all symbols which are satisfy function cmp or doesn't satisfy
+** depends of negation value (0 or any other).
 */
 
-void	ft_memdel(void **ap)
+void	ft_strskip(char **str, int (*cmp)(int), int negation)
 {
-	if (ap)
-	{
-		if (*ap)
-			free(*ap);
-		*ap = NULL;
-	}
+	while (cmp(**str) ^ negation)
+		(*str)++;
 }
