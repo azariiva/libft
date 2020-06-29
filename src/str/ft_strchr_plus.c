@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strskip.c                                       :+:      :+:    :+:   */
+/*   ft_strchr_plus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/28 19:51:37 by blinnea           #+#    #+#             */
-/*   Updated: 2020/06/28 19:55:46 by blinnea          ###   ########.fr       */
+/*   Created: 2020/06/28 21:04:47 by blinnea           #+#    #+#             */
+/*   Updated: 2020/06/28 21:09:16 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** Skips all symbols which are satisfy function cmp or doesn't satisfy
-** depends of negation value (0 or any other).
+** The strchr_plus() function returns a pointer to the first occurrence of the
+** character which satisfies function cmp.
 */
 
-void	ft_strskip(char **str, int (*cmp)(int), int negation)
+#include "libft.h"
+
+char		*ft_strchr_plus(const char *s, int (*cmp)(int))
 {
-	while (cmp(**str) ^ negation)
-		(*str)++;
+	while (*s)
+	{
+		if (cmp(*s))
+			return ((char *)s);
+		++s;
+	}
+	if (cmp(*s))
+		return ((char *)s);
+	return (NULL);
 }

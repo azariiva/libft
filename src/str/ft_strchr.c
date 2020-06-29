@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blinnea <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 16:09:17 by blinnea           #+#    #+#             */
-/*   Updated: 2019/09/11 19:39:31 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/06/28 21:08:03 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+/*
+** The strchr() function returns a pointer to the first occurrence of the
+** character c in the string s.
+*/
+char		*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
