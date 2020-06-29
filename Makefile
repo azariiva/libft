@@ -6,7 +6,7 @@
 #    By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 17:37:07 by blinnea           #+#    #+#              #
-#    Updated: 2020/06/28 21:10:50 by blinnea          ###   ########.fr        #
+#    Updated: 2020/06/29 19:00:10 by blinnea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ GREENB = \033[42m
 #                               COMPILER OPTIONS                               #
 # **************************************************************************** #
 CC = gcc
-CF = -Wall -Wextra -Werror
+CF = -Wall -Wextra -Werror -ggdb
 
 NAME = libft
 

@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 19:35:34 by blinnea           #+#    #+#             */
-/*   Updated: 2020/06/28 21:12:39 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/06/29 21:19:39 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,19 @@
 char	*ft_strtrim(char const *s)
 {
 	char const	*start;
-	char const	*end;
-	size_t	len;
+	char		*end;
+	size_t		len;
 
 	if (!s)
 		return (NULL);
-	if (!*(start = ft_strchr_plus(s, ft_isspace)))
+	start = s;
+	while (*start && ft_isspace(*start))
+		++start;
+	if (!*start)
 		len = 0;
 	else
 	{
-		end = s + ft_strlen(s) - 1;
+		end = (char *)s + ft_strlen(s) - 1;
 		while (ft_isspace(*end))
 			--end;
 		len = end - start + 1;
