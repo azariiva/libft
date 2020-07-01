@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 20:43:50 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:55:46 by blinnea          ###   ########.fr       */
+/*   Created: 2019/09/04 18:38:59 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 18:39:43 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
-#include <unistd.h>
+#include <stddef.h>
 
-int	ft_putendl(char const *s)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	return (ft_putendl_fd(s, STDOUT_FILENO));
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		*((char *)dst) = ((char *)src)[i];
+		dst = (char *)dst + 1;
+		if (((unsigned char *)src)[i++] == (unsigned char)c)
+			return (dst);
+	}
+	return (NULL);
 }

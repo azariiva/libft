@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 16:09:17 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:56:47 by blinnea          ###   ########.fr       */
+/*   Created: 2019/09/11 19:35:34 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 19:13:14 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
 #include "libft_string.h"
-#include <unistd.h>
+#include "libft_ctype.h"
+#include <stddef.h>
 
-int	ft_putstr_fd(char const *str, int fd)
+char	*ft_strtrim(char const *s)
 {
-	ssize_t	len;
-	ssize_t	written;
+	char const	*start;
+	char		*end;
+	size_t		len;
 
-	len = ft_strlen(str);
-	if ((written = write(fd, str, len * sizeof(*str))) == -1)
-		return (EOF);
+	if (!s)
+		return (NULL);
+	start = s;
+	while (*start && ft_isspace(*start))
+		++start;
+	if (!*start)
+		len = 0;
 	else
-		return (written);
+	{
+		end = (char *)s + ft_strlen(s) - 1;
+		while (ft_isspace(*end))
+			--end;
+		len = end - start + 1;
+	}
+	return (ft_strsub(s, start - s, len));
 }

@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_lstdel_ic.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 20:43:50 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:55:46 by blinnea          ###   ########.fr       */
+/*   Created: 2020/03/11 18:19:01 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 19:51:30 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
-#include <unistd.h>
+#include "libft_list.h"
+#include <stddef.h>
 
-int	ft_putendl(char const *s)
+void	ft_lstdel_ic(t_list **alst)
 {
-	return (ft_putendl_fd(s, STDOUT_FILENO));
+	t_list	*ptr;
+	t_list	*todel;
+
+	ptr = *alst;
+	while (ptr)
+	{
+		todel = ptr;
+		ptr = ptr->next;
+		ft_lstdelone_ic(&todel);
+	}
+	*alst = NULL;
 }

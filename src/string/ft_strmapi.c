@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 20:43:50 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:55:46 by blinnea          ###   ########.fr       */
+/*   Created: 2019/09/11 18:29:38 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 19:28:52 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
-#include <unistd.h>
+#include "libft_string.h"
+#include <stddef.h>
 
-int	ft_putendl(char const *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	return (ft_putendl_fd(s, STDOUT_FILENO));
+	char			*new;
+	size_t			len;
+	unsigned int	i;
+
+	if (!s || !f)
+		return (NULL);
+	len = ft_strlen(s);
+	if (!(new = ft_strnew(len)))
+		return (NULL);
+	i = -1;
+	while (++i < len)
+		new[i] = f(i, s[i]);
+	return (new);
 }

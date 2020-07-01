@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:39:42 by blinnea           #+#    #+#             */
-/*   Updated: 2020/03/13 15:20:22 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/01 19:52:23 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 # define LIBFT_LIST_H
 
-# include "libft.h"
-# include <stdlib.h>
+# include <stddef.h>
 
 typedef struct	s_list
 {

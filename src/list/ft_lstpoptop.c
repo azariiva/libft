@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_lstpoptop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 20:43:50 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:55:46 by blinnea          ###   ########.fr       */
+/*   Created: 2020/03/11 22:10:34 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 19:50:50 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
-#include <unistd.h>
+#include "libft_list.h"
+#include <stddef.h>
 
-int	ft_putendl(char const *s)
+t_list	*ft_lstpoptop(t_list **lst)
 {
-	return (ft_putendl_fd(s, STDOUT_FILENO));
+	t_list	*head;
+
+	if (!lst || !(head = *lst))
+		return (NULL);
+	*lst = head->next;
+	head->next = NULL;
+	return (head);
 }

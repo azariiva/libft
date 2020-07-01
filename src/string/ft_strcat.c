@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 20:43:50 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:55:46 by blinnea          ###   ########.fr       */
+/*   Created: 2019/09/04 16:09:17 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 19:30:47 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
-#include <unistd.h>
-
-int	ft_putendl(char const *s)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	return (ft_putendl_fd(s, STDOUT_FILENO));
+	char	*p;
+
+	p = s1;
+	while (*p)
+		++p;
+	while (*s2)
+		*p++ = *s2++;
+	*p = 0;
+	return (s1);
 }

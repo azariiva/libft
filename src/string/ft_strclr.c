@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 20:43:50 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:55:46 by blinnea          ###   ########.fr       */
+/*   Created: 2019/09/04 17:58:54 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 19:07:38 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
-#include <unistd.h>
+#include "libft_string.h"
+#include "libft_memory.h"
 
-int	ft_putendl(char const *s)
+void	ft_strclr(char *s)
 {
-	return (ft_putendl_fd(s, STDOUT_FILENO));
+	ft_bzero(s, ft_strlen(s));
 }

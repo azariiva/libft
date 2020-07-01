@@ -6,7 +6,7 @@
 #    By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 17:37:07 by blinnea           #+#    #+#              #
-#    Updated: 2020/06/29 19:00:10 by blinnea          ###   ########.fr        #
+#    Updated: 2020/07/01 20:16:12 by blinnea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,26 @@ LST_H =		include/$(NAME)_list.h
 STR_H =		include/$(NAME)_string.h
 CTP_H =		include/$(NAME)_ctype.h
 IO_H =		include/$(NAME)_io.h
+QUE_H =		include/$(NAME)_queue.h
+MEM_H =		include/$(NAME)_memory.h
+INT_H =		include/$(NAME)_integer.h
+
+# **************************************************************************** #
+#                           TEMPORARY DIRECTORIES                              #
+# **************************************************************************** #
+LSTDIR =	obj/list
+STRDIR =	obj/string
+CTPDIR =	obj/ctype
+IODIR =		obj/io
+QUEDIR =	obj/queue
+MEMDIR =	obj/memory
+INTDIR =	obj/integer
+
+ALLDIR = $(LSTDIR) $(STRDIR) $(CTPDIR) $(IODIR) $(QUEDIR) $(MEMDIR) $(INTDIR)
 
 # **************************************************************************** #
 #                                 FILENAMES                                    #
 # **************************************************************************** #
-FILES =		ft_memset ft_memdel ft_memalloc ft_bzero ft_memcpy ft_memccpy \
-			ft_memmove ft_memchr ft_atoi ft_itoa ft_abs ft_labs ft_llabs \
-			ft_memcmp
 LSTFILES =	ft_lstnew ft_lstdelone ft_lstdel ft_lstadd ft_lstiter ft_lstmap \
 			ft_lstdelone_ic ft_lstdel_ic ft_lstswptop ft_lstpoptop ft_lsttrans \
 			ft_lstshftup ft_lstpopbot ft_lstshftdown ft_lstnew_ic ft_lstsize
@@ -56,56 +69,73 @@ CTPFILES =	ft_isalnum ft_isascii ft_isprint ft_islower ft_isupper ft_toupper \
 			ft_ispunct ft_isxdigit ft_isdigit
 IOFILES =	ft_putchar ft_putstr ft_putendl ft_putnbr ft_putchar_fd \
 			ft_putstr_fd ft_putendl_fd ft_putnbr_fd
-OFILES =	$(patsubst %, obj/%.o, $(FILES))
-LSTOFILES =	$(patsubst %, obj/lst/%.o, $(LSTFILES))
-STROFILES =	$(patsubst %, obj/str/%.o, $(STRFILES))
-CTPOFILES =	$(patsubst %, obj/ctp/%.o, $(CTPFILES))
-IOOFILES =	$(patsubst %, obj/io/%.o, $(IOFILES))
+QUEFILES =	ft_quenew ft_queadd ft_quepop ft_quedel
+MEMFILES =	ft_memset ft_memdel ft_memalloc ft_bzero ft_memcpy ft_memccpy \
+			ft_memcmp ft_memmove ft_memchr
+INTFILES =	ft_atoi ft_itoa ft_abs ft_labs ft_llabs
+
+LSTOFILES =	$(patsubst %, $(LSTDIR)/%.o, $(LSTFILES))
+STROFILES =	$(patsubst %, $(STRDIR)/%.o, $(STRFILES))
+CTPOFILES =	$(patsubst %, $(CTPDIR)/%.o, $(CTPFILES))
+IOOFILES =	$(patsubst %, $(IODIR)/%.o, $(IOFILES))
+QUEOFILES =	$(patsubst %, $(QUEDIR)/%.o, $(QUEFILES))
+MEMOFILES =	$(patsubst %, $(MEMDIR)/%.o, $(MEMFILES))
+INTOFILES =	$(patsubst %, $(INTDIR)/%.o, $(INTFILES))
+
+ALLOFILES =	$(LSTOFILES) $(STROFILES) $(CTPOFILES) $(IOOFILES) $(QUEOFILES) \
+			$(MEMOFILES) $(INTOFILES)
 
 .PHONY: clean fclean re all
 
-all: obj $(NAME).a
+all: dir $(NAME).a
 
-$(NAME).a: $(LSTOFILES) $(STROFILES) $(OFILES) $(CTPOFILES) $(IOOFILES)
-	@ar rc $@ $(LSTOFILES) $(STROFILES) $(OFILES) $(CTPOFILES) $(IOOFILES)
+$(NAME).a: $(ALLOFILES)
+	@ar rc $@ $(ALLOFILES)
 	@ranlib $@
 	@echo "\n> $(GREEN)$(NAME) created$(DEFAULT)"
 
-obj:
-	@mkdir -p obj
-	@mkdir -p obj/str
-	@mkdir -p obj/lst
-	@mkdir -p obj/ctp
-	@mkdir -p obj/io
+# create temporary directories
+dir:
+	@mkdir -p obj $(ALLDIR)
 
-# create $(OFILES)
-obj/%.o: src/%.c $(FT_H)
+# create list object files
+obj/list/%.o: src/list/%.c $(FT_H) $(LST_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
-# create $(LSTOFILES)
-obj/lst/%.o: src/lst/%.c $(FT_H) $(LST_H)
+# create string object files
+obj/string/%.o: src/string/%.c $(CTP_H) $(MEM_H) $(STR_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
-# create $(STROFILES)
-obj/str/%.o: src/str/%.c $(STR_H)
+# create ctype object files
+obj/ctype/%.o: src/ctype/%.c $(CTP_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
-# create $(CTPOFILES)
-obj/ctp/%.o: src/ctp/%.c $(CTP_H)
+# create io object files
+obj/io/%.o: src/io/%.c $(FT_H) $(STR_H) $(IO_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
-# create $(IOOFILES)
-obj/io/%.o: src/io/%.c $(IO_H)
+# create queue object files
+obj/queue/%.o: src/queue/%.c $(MEM_H) $(LST_H) $(QUE_H)
+	@$(CC) $(CF) -c $< -o $@ -I include
+	@echo "$(GREENB) $(DEFAULT)\c"
+
+# create memory object files
+obj/memory/%.o: src/memory/%.c $(MEM_H)
+	@$(CC) $(CF) -c $< -o $@ -I include
+	@echo "$(GREENB) $(DEFAULT)\c"
+
+# create integer object files
+obj/integer/%.o: src/integer/%.c $(CTP_H) $(STR_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 clean:
-	@rm -f $(OFILES) $(LSTOFILES) $(STROFILES) $(CTPOFILES) $(IOOFILES)
-	@rm -fd obj/str obj/lst obj/ctp obj/io obj
+	@rm -f $(ALLOFILES)
+	@rm -fd $(ALLDIR) obj
 	@echo "> $(YELLOW)$(NAME) clean$(DEFAULT)"
 
 fclean: clean

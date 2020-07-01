@@ -1,19 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 20:43:50 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:55:46 by blinnea          ###   ########.fr       */
+/*   Created: 2019/08/12 18:21:24 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 18:33:21 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
-#include <unistd.h>
+#include "libft_ctype.h"
 
-int	ft_putendl(char const *s)
+int		ft_atoi(char const *str)
 {
-	return (ft_putendl_fd(s, STDOUT_FILENO));
+	int					sign;
+	unsigned long long	result;
+
+	sign = 0;
+	while (ft_isspace(*str))
+		++str;
+	if (*str == '-')
+	{
+		sign = 1;
+		++str;
+	}
+	else if (*str == '+')
+		++str;
+	result = 0;
+	while (ft_isdigit(*str))
+	{
+		result = result * 10 + (int)*str++ - '0';
+		if (result > 9223372036854775807)
+			return (!sign ? -1 : 0);
+	}
+	return (sign ? -result : result);
 }

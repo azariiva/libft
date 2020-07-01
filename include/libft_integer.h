@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_ctype.h                                      :+:      :+:    :+:   */
+/*   libft_integer.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/12 19:54:17 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:43:03 by blinnea          ###   ########.fr       */
+/*   Created: 2020/07/01 18:30:35 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 18:42:48 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_CTYPE_H
+#ifndef LIBFT_INTEGER_H
 
-# define LIBFT_CTYPE_H
+# define LIBFT_INTEGER_H
 
-int	ft_isalnum(int c);
-int	ft_isalpha(int c);
-int	ft_isascii(int c);
-int	ft_isblank(int c);
-int	ft_iscntrl(int c);
-int	ft_isdigit(int c);
-int	ft_isgraph(int c);
-int	ft_islower(int c);
-int	ft_isprint(int c);
-int	ft_ispunct(int c);
-int	ft_isspace(int c);
-int	ft_isupper(int c);
-int	ft_isxdigit(int c);
-int	ft_toupper(int c);
-int	ft_tolower(int c);
+/*
+** The ft_abs() function computes the absolute value of the integer i.
+*/
+int				ft_abs(int i);
+/*
+** The ft_labs() function returns the absolute value of the long integer i.
+*/
+long			ft_labs(long i);
+/*
+** The ft_llabs() function returns the absolute value of i.
+*/
+long long		ft_llabs(long long i);
+char			*ft_itoa(int n);
+int				ft_atoi(const char *str);
 
 #endif

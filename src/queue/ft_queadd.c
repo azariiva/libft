@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_queadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 20:43:50 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:55:46 by blinnea          ###   ########.fr       */
+/*   Created: 2020/07/01 18:05:00 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 20:02:00 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
-#include <unistd.h>
+#include "libft_queue.h"
 
-int	ft_putendl(char const *s)
+int	ft_queadd(t_queue *queue, t_list *new)
 {
-	return (ft_putendl_fd(s, STDOUT_FILENO));
+	if (!new || !queue)
+		return (ERR);
+	if (!queue->head)
+	{
+		queue->head = new;
+		queue->tail = queue->head;
+	}
+	else
+	{
+		queue->tail->next = new;
+		queue->tail = queue->tail->next;
+	}
+	return (OK);
 }

@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_quepop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 20:43:50 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:55:46 by blinnea          ###   ########.fr       */
+/*   Created: 2020/07/01 18:11:52 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 20:02:23 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
-#include <unistd.h>
+#include "libft_queue.h"
+#include <stddef.h>
 
-int	ft_putendl(char const *s)
+t_list	*ft_quepop(t_queue *queue)
 {
-	return (ft_putendl_fd(s, STDOUT_FILENO));
+	t_list	*elem;
+
+	if (queue->head == queue->tail)
+	{
+		elem = queue->head;
+		queue->head = NULL;
+		queue->tail = NULL;
+	}
+	else
+	{
+		elem = queue->head;
+		queue->head = queue->head->next;
+		elem->next = NULL;
+	}
+	return (elem);
 }

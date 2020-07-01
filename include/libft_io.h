@@ -6,18 +6,13 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:04:42 by blinnea           #+#    #+#             */
-/*   Updated: 2020/03/13 20:01:55 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/01 18:50:12 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_IO_H
 
 # define LIBFT_IO_H
-
-# include "libft_string.h"
-# include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
 
 # ifndef EOF
 #  define EOF -1

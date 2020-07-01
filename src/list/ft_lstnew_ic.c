@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew_ic.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 20:43:50 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:55:46 by blinnea          ###   ########.fr       */
+/*   Created: 2020/03/12 14:28:27 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 19:46:12 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
-#include <unistd.h>
+#include "libft_list.h"
+#include "libft_memory.h"
+#include "stddef.h"
 
-int	ft_putendl(char const *s)
+t_list	*ft_lstnew_ic(size_t content_size)
 {
-	return (ft_putendl_fd(s, STDOUT_FILENO));
+	t_list	*new;
+
+	if (!(new = (t_list *)ft_memalloc(sizeof(t_list))))
+		return (NULL);
+	new->content = NULL;
+	new->content_size = content_size;
+	new->next = NULL;
+	return (new);
 }

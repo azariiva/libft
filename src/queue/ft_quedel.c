@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_quedel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 20:43:50 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:55:46 by blinnea          ###   ########.fr       */
+/*   Created: 2020/07/01 18:16:42 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 20:02:48 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_io.h"
-#include <unistd.h>
+#include "libft_queue.h"
+#include "libft_list.h"
+#include <stddef.h>
 
-int	ft_putendl(char const *s)
+void	ft_quedel(t_queue **queue, void (*del)(void *, size_t))
 {
-	return (ft_putendl_fd(s, STDOUT_FILENO));
+	if (!queue || !*queue)
+		return ;
+	(*queue)->tail = NULL;
+	ft_lstdel(&((*queue)->head), del);
 }
