@@ -6,7 +6,7 @@
 #    By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 17:37:07 by blinnea           #+#    #+#              #
-#    Updated: 2020/07/01 20:16:12 by blinnea          ###   ########.fr        #
+#    Updated: 2020/07/02 00:33:31 by blinnea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ IO_H =		include/$(NAME)_io.h
 QUE_H =		include/$(NAME)_queue.h
 MEM_H =		include/$(NAME)_memory.h
 INT_H =		include/$(NAME)_integer.h
+GNL_H =		include/$(NAME)_get_next_line.h
 
 # **************************************************************************** #
 #                           TEMPORARY DIRECTORIES                              #
@@ -50,8 +51,10 @@ IODIR =		obj/io
 QUEDIR =	obj/queue
 MEMDIR =	obj/memory
 INTDIR =	obj/integer
+GNLDIR =	obj/get_next_line
 
-ALLDIR = $(LSTDIR) $(STRDIR) $(CTPDIR) $(IODIR) $(QUEDIR) $(MEMDIR) $(INTDIR)
+ALLDIR =	$(LSTDIR) $(STRDIR) $(CTPDIR) $(IODIR) $(QUEDIR) $(MEMDIR) \
+			$(INTDIR) $(GNLDIR)
 
 # **************************************************************************** #
 #                                 FILENAMES                                    #
@@ -69,10 +72,11 @@ CTPFILES =	ft_isalnum ft_isascii ft_isprint ft_islower ft_isupper ft_toupper \
 			ft_ispunct ft_isxdigit ft_isdigit
 IOFILES =	ft_putchar ft_putstr ft_putendl ft_putnbr ft_putchar_fd \
 			ft_putstr_fd ft_putendl_fd ft_putnbr_fd
-QUEFILES =	ft_quenew ft_queadd ft_quepop ft_quedel
+QUEFILES =	ft_quenew ft_queadd ft_quepop ft_quedel ft_queisempty
 MEMFILES =	ft_memset ft_memdel ft_memalloc ft_bzero ft_memcpy ft_memccpy \
 			ft_memcmp ft_memmove ft_memchr
 INTFILES =	ft_atoi ft_itoa ft_abs ft_labs ft_llabs
+GNLFILES =	get_next_line gnl_del
 
 LSTOFILES =	$(patsubst %, $(LSTDIR)/%.o, $(LSTFILES))
 STROFILES =	$(patsubst %, $(STRDIR)/%.o, $(STRFILES))
@@ -81,9 +85,10 @@ IOOFILES =	$(patsubst %, $(IODIR)/%.o, $(IOFILES))
 QUEOFILES =	$(patsubst %, $(QUEDIR)/%.o, $(QUEFILES))
 MEMOFILES =	$(patsubst %, $(MEMDIR)/%.o, $(MEMFILES))
 INTOFILES =	$(patsubst %, $(INTDIR)/%.o, $(INTFILES))
+GNLOFILES = $(patsubst %, $(GNLDIR)/%.o, $(GNLFILES))
 
 ALLOFILES =	$(LSTOFILES) $(STROFILES) $(CTPOFILES) $(IOOFILES) $(QUEOFILES) \
-			$(MEMOFILES) $(INTOFILES)
+			$(MEMOFILES) $(INTOFILES) $(GNLOFILES)
 
 .PHONY: clean fclean re all
 
@@ -99,37 +104,42 @@ dir:
 	@mkdir -p obj $(ALLDIR)
 
 # create list object files
-obj/list/%.o: src/list/%.c $(FT_H) $(LST_H)
+$(LSTDIR)/%.o: src/list/%.c $(FT_H) $(LST_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create string object files
-obj/string/%.o: src/string/%.c $(CTP_H) $(MEM_H) $(STR_H)
+$(STRDIR)/%.o: src/string/%.c $(CTP_H) $(MEM_H) $(STR_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create ctype object files
-obj/ctype/%.o: src/ctype/%.c $(CTP_H)
+$(CTPDIR)/%.o: src/ctype/%.c $(CTP_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create io object files
-obj/io/%.o: src/io/%.c $(FT_H) $(STR_H) $(IO_H)
+$(IODIR)/%.o: src/io/%.c $(FT_H) $(STR_H) $(IO_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create queue object files
-obj/queue/%.o: src/queue/%.c $(MEM_H) $(LST_H) $(QUE_H)
+$(QUEDIR)/%.o: src/queue/%.c $(MEM_H) $(LST_H) $(QUE_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create memory object files
-obj/memory/%.o: src/memory/%.c $(MEM_H)
+$(MEMDIR)/%.o: src/memory/%.c $(MEM_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create integer object files
-obj/integer/%.o: src/integer/%.c $(CTP_H) $(STR_H)
+$(INTDIR)/%.o: src/integer/%.c $(CTP_H) $(STR_H)
+	@$(CC) $(CF) -c $< -o $@ -I include
+	@echo "$(GREENB) $(DEFAULT)\c"
+
+# create get_next_line object files
+$(GNLDIR)/%.o: src/get_next_line/%.c $(MEM_H) $(STR_H) $(LST_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 

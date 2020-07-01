@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_queisempty.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 17:39:16 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 22:27:31 by blinnea          ###   ########.fr       */
+/*   Created: 2020/07/01 22:10:39 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/01 22:16:26 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft_queue.h"
 
-void	ft_memdel(void **ap)
+int	ft_queisempty(t_queue *queue)
 {
-	if (ap)
-	{
-		if (*ap)
-			free(*ap);
-		*ap = NULL;
-	}
+	return (queue->head ? 0 : 1);
 }

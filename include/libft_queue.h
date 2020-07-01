@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:11:24 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:59:44 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/01 22:08:35 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,9 @@ t_list		*ft_quepop(t_queue *queue);
 ** recieved pointer to NULL.
 */
 void		ft_quedel(t_queue **queue, void (*del)(void *, size_t));
+/*
+** Checks if queue is empty.
+*/
+int			ft_queisempty(t_queue *queue);
 
 #endif
