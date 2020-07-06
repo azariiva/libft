@@ -6,12 +6,12 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 02:23:03 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/06 03:18:29 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/06 15:07:22 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_PRINTF_H
-# define LIBFT_PRINTF
+# define LIBFT_PRINTF_H
 
 # include "libft_pfbuffer.h"
 # include <stdarg.h>

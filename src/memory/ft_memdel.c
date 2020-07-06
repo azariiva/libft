@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 17:39:16 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 22:27:31 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/05 17:57:29 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_memdel(void **ap)
 {
-	if (ap)
+	if (ap && *ap)
 	{
-		if (*ap)
-			free(*ap);
+		free(*ap);
 		*ap = NULL;
 	}
 }
