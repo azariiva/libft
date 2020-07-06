@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libft_float.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 16:09:17 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/06 03:01:30 by blinnea          ###   ########.fr       */
+/*   Created: 2020/07/06 01:05:58 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/06 01:18:34 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+#ifndef LIBFT_FLOAT
 
-# define LIBFT_H
+# define LIBFT_FLOAT
 
-# include "libft_printf.h"
-# include "libft_get_next_line.h"
-# include "libft_io.h"
-# include "libft_queue.h"
-# include "libft_integer.h"
-# include "libft_list.h"
-# include "libft_string.h"
-# include "libft_memory.h"
-# include "libft_ctype.h"
+int		ft_lftoa_rounding(long double f_part_c, int precision,
+				long double *f_part, long long *i_part);
+void	ft_lftoa_set_other_nums(int i, char **result);
+void	ft_lftoa_add_number(int *i, char **result, long double *f_part);
+char	*ft_lftoa(long double n, int precision);
 
 #endif

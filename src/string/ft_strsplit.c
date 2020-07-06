@@ -6,11 +6,12 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 16:09:17 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:38:12 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/06 02:52:30 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_string.h"
+#include "libft_memory.h"
 #include <stdlib.h>
 
 static void		*ft_free_warr(char **warr, size_t len)
@@ -20,7 +21,7 @@ static void		*ft_free_warr(char **warr, size_t len)
 	i = 0;
 	while (i < len)
 		ft_strdel(warr + i++);
-	free(warr);
+	ft_memdel((void **)&warr);
 	return (NULL);
 }
 
@@ -47,7 +48,7 @@ char			**ft_strsplit(char const *s, char c)
 	char	**p_warr;
 	size_t	len;
 
-	if (!s || !(warr = (char **)malloc((ft_count_words(s, c) + 1) * \
+	if (!s || !(warr = (char **)ft_memalloc((ft_count_words(s, c) + 1) * \
 					sizeof(char *))))
 		return (NULL);
 	p_warr = warr;

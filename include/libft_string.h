@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:56:55 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:42:40 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/06 02:55:12 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s);
 /*
-** Allocates (with malloc(3)) and returns an array of “fresh” strings (all
+** Allocates (with ft_memalloc) and returns an array of “fresh” strings (all
 ** ending with ’\0’, including the array itself) obtained by spliting s using
 ** the character c as a delimiter.
 ** If the allocation fails the function returns NULL. Example:
@@ -29,14 +29,14 @@ char	*ft_strtrim(char const *s);
 */
 char	**ft_strsplit(char const *s, char c);
 /*
-** Allocates (with malloc(3)) and returns a “fresh” string end- ing with ’\0’.
+** Allocates (with ft_memalloc) and returns a “fresh” string end- ing with ’\0’.
 ** Each character of the string is initialized at ’\0’. If the allocation fails
 ** the function returns NULL.
 */
 char	*ft_strnew(size_t size);
 /*
 ** Takes as a parameter the address of a string that need to be freed with
-** free(3), then sets its pointer to NULL.
+** ft_memdel.
 */
 void	ft_strdel(char **as);
 /*
@@ -80,7 +80,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 /*
-** Allocates (with malloc(3)) and returns an array of “fresh” strings (all
+** Allocates (with ft_memalloc) and returns an array of “fresh” strings (all
 ** ending with ’\0’, including the array itself) obtained by spliting s using
 ** the characters which satisfies function cmp as a delimiter.
 ** If the allocation fails the function returns NULL.
@@ -91,5 +91,5 @@ char	**ft_strsplit_plus(char const *s, int (*cmp)(int));
 ** character which satisfies function cmp.
 */
 char	*ft_strchr_plus(const char *s, int (*cmp)(int));
-
+void	ft_strup(char *tmp);
 #endif

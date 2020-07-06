@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putchar_buf.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 16:09:17 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/06 03:01:30 by blinnea          ###   ########.fr       */
+/*   Created: 2020/07/06 02:14:55 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/06 02:15:12 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+#include "libft_pfbuffer.h"
 
-# define LIBFT_H
-
-# include "libft_printf.h"
-# include "libft_get_next_line.h"
-# include "libft_io.h"
-# include "libft_queue.h"
-# include "libft_integer.h"
-# include "libft_list.h"
-# include "libft_string.h"
-# include "libft_memory.h"
-# include "libft_ctype.h"
-
-#endif
+ssize_t		ft_putchar_buf(t_buf *buf, char c)
+{
+	buf->body[buf->total++] = c;
+	if (buf->total == MAX_BUF && ft_fflush(buf) < 0)
+		return (0);
+	return (1);
+}

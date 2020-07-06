@@ -6,7 +6,7 @@
 #    By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 17:37:07 by blinnea           #+#    #+#              #
-#    Updated: 2020/07/02 00:33:31 by blinnea          ###   ########.fr        #
+#    Updated: 2020/07/06 02:56:49 by blinnea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,112 +40,111 @@ QUE_H =		include/$(NAME)_queue.h
 MEM_H =		include/$(NAME)_memory.h
 INT_H =		include/$(NAME)_integer.h
 GNL_H =		include/$(NAME)_get_next_line.h
-
-# **************************************************************************** #
-#                           TEMPORARY DIRECTORIES                              #
-# **************************************************************************** #
-LSTDIR =	obj/list
-STRDIR =	obj/string
-CTPDIR =	obj/ctype
-IODIR =		obj/io
-QUEDIR =	obj/queue
-MEMDIR =	obj/memory
-INTDIR =	obj/integer
-GNLDIR =	obj/get_next_line
-
-ALLDIR =	$(LSTDIR) $(STRDIR) $(CTPDIR) $(IODIR) $(QUEDIR) $(MEMDIR) \
-			$(INTDIR) $(GNLDIR)
+FLT_H =		include/$(NAME)_float.h
+PFB_H =		include/$(NAME)_pfbuffer.h
 
 # **************************************************************************** #
 #                                 FILENAMES                                    #
 # **************************************************************************** #
-LSTFILES =	ft_lstnew ft_lstdelone ft_lstdel ft_lstadd ft_lstiter ft_lstmap \
-			ft_lstdelone_ic ft_lstdel_ic ft_lstswptop ft_lstpoptop ft_lsttrans \
-			ft_lstshftup ft_lstpopbot ft_lstshftdown ft_lstnew_ic ft_lstsize
-STRFILES =	ft_strnew ft_strdel ft_strclr ft_striter ft_striteri ft_strlen \
-			ft_strdup ft_strcpy ft_strmap ft_strmapi ft_strequ ft_strnequ \
-			ft_strsub ft_strjoin ft_strtrim ft_strncpy ft_strcat ft_strncat \
-			ft_strlcat ft_strchr ft_strrchr ft_strstr ft_strnstr ft_strcmp \
-			ft_strncmp ft_strsplit ft_strsplit_plus ft_strchr_plus
-CTPFILES =	ft_isalnum ft_isascii ft_isprint ft_islower ft_isupper ft_toupper \
-			ft_tolower ft_isblank ft_iscntrl ft_isalpha ft_isgraph ft_isspace \
-			ft_ispunct ft_isxdigit ft_isdigit
-IOFILES =	ft_putchar ft_putstr ft_putendl ft_putnbr ft_putchar_fd \
-			ft_putstr_fd ft_putendl_fd ft_putnbr_fd
-QUEFILES =	ft_quenew ft_queadd ft_quepop ft_quedel ft_queisempty
-MEMFILES =	ft_memset ft_memdel ft_memalloc ft_bzero ft_memcpy ft_memccpy \
-			ft_memcmp ft_memmove ft_memchr
-INTFILES =	ft_atoi ft_itoa ft_abs ft_labs ft_llabs
-GNLFILES =	get_next_line gnl_del
+LSTFILES =	$(shell find src/list -name '*.c')
+STRFILES =	$(shell find src/string -name '*.c')
+CTPFILES =	$(shell find src/ctype -name '*.c')
+IOFILES =	$(shell find src/io -name '*.c')
+QUEFILES =	$(shell find src/queue -name '*.c')
+MEMFILES =	$(shell find src/memory -name '*.c')
+INTFILES =	$(shell find src/integer -name '*.c')
+GNLFILES =	$(shell find src/get_next_line -name '*.c')
+FLTFILES =	$(shell find src/float -name '*.c')
+PFBFILES =	$(shell find src/pfbuffer -name '*.c')
+PFFILES =	$(shell find src/printf -name '*.c')
 
-LSTOFILES =	$(patsubst %, $(LSTDIR)/%.o, $(LSTFILES))
-STROFILES =	$(patsubst %, $(STRDIR)/%.o, $(STRFILES))
-CTPOFILES =	$(patsubst %, $(CTPDIR)/%.o, $(CTPFILES))
-IOOFILES =	$(patsubst %, $(IODIR)/%.o, $(IOFILES))
-QUEOFILES =	$(patsubst %, $(QUEDIR)/%.o, $(QUEFILES))
-MEMOFILES =	$(patsubst %, $(MEMDIR)/%.o, $(MEMFILES))
-INTOFILES =	$(patsubst %, $(INTDIR)/%.o, $(INTFILES))
-GNLOFILES = $(patsubst %, $(GNLDIR)/%.o, $(GNLFILES))
+LSTOFILES =	$(addprefix obj/, $(LSTFILES:src/list/%.c=%.o))
+STROFILES =	$(addprefix obj/, $(STRFILES:src/string/%.c=%.o))
+CTPOFILES =	$(addprefix obj/, $(CTPFILES:src/ctype/%.c=%.o))
+IOOFILES =	$(addprefix obj/, $(IOFILES:src/io/%.c=%.o))
+QUEOFILES =	$(addprefix obj/, $(QUEFILES:src/queue/%.c=%.o))
+MEMOFILES =	$(addprefix obj/, $(MEMFILES:src/memory/%.c=%.o))
+INTOFILES =	$(addprefix obj/, $(INTFILES:src/integer/%.c=%.o))
+GNLOFILES = $(addprefix obj/, $(GNLFILES:src/get_next_line/%.c=%.o))
+FLTOFILES = $(addprefix obj/, $(FLTFILES:src/float/%.c=%.o))
+PFBOFILES = $(addprefix obj/, $(PFBFILES:src/pfbuffer/%.c=%.o))
+PFOFILES =	$(addprefix obj/, $(PFFILES:src/printf/%.c=%.o))
 
 ALLOFILES =	$(LSTOFILES) $(STROFILES) $(CTPOFILES) $(IOOFILES) $(QUEOFILES) \
-			$(MEMOFILES) $(INTOFILES) $(GNLOFILES)
+			$(MEMOFILES) $(INTOFILES) $(GNLOFILES) $(FLTOFILES) $(PFBOFILES) \
+			$(PFOFILES)
 
 .PHONY: clean fclean re all
 
 all: dir $(NAME).a
 
-$(NAME).a: $(ALLOFILES)
+$(NAME).a: Makefile $(ALLOFILES)
 	@ar rc $@ $(ALLOFILES)
 	@ranlib $@
 	@echo "\n> $(GREEN)$(NAME) created$(DEFAULT)"
 
 # create temporary directories
 dir:
-	@mkdir -p obj $(ALLDIR)
+	@mkdir -p obj
 
 # create list object files
-$(LSTDIR)/%.o: src/list/%.c $(FT_H) $(LST_H)
+obj/%.o: src/list/%.c $(FT_H) $(LST_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create string object files
-$(STRDIR)/%.o: src/string/%.c $(CTP_H) $(MEM_H) $(STR_H)
+obj/%.o: src/string/%.c $(CTP_H) $(MEM_H) $(STR_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create ctype object files
-$(CTPDIR)/%.o: src/ctype/%.c $(CTP_H)
+obj/%.o: src/ctype/%.c $(CTP_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create io object files
-$(IODIR)/%.o: src/io/%.c $(FT_H) $(STR_H) $(IO_H)
+obj/%.o: src/io/%.c $(FT_H) $(STR_H) $(IO_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create queue object files
-$(QUEDIR)/%.o: src/queue/%.c $(MEM_H) $(LST_H) $(QUE_H)
+obj/%.o: src/queue/%.c $(MEM_H) $(LST_H) $(QUE_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create memory object files
-$(MEMDIR)/%.o: src/memory/%.c $(MEM_H)
+obj/%.o: src/memory/%.c $(MEM_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create integer object files
-$(INTDIR)/%.o: src/integer/%.c $(CTP_H) $(STR_H)
+obj/%.o: src/integer/%.c $(CTP_H) $(STR_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create get_next_line object files
-$(GNLDIR)/%.o: src/get_next_line/%.c $(MEM_H) $(STR_H) $(LST_H)
+obj/%.o: src/get_next_line/%.c $(MEM_H) $(STR_H) $(LST_H)
+	@$(CC) $(CF) -c $< -o $@ -I include
+	@echo "$(GREENB) $(DEFAULT)\c"
+
+# create float object files
+obj/%.o: src/float/%.c $(MEM_H) $(STR_H)
+	@$(CC) $(CF) -c $< -o $@ -I include
+	@echo "$(GREENB) $(DEFAULT)\c"
+
+# create pfbuffer object files
+obj/%.o: src/pfbuffer/%.c $(MEM_H) $(STR_H)
+	@$(CC) $(CF) -c $< -o $@ -I include
+	@echo "$(GREENB) $(DEFAULT)\c"
+
+# create printf object files
+obj/%.o: src/printf/%.c $(MEM_H) $(STR_H) $(INT_H) $(PFB_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 clean:
 	@rm -f $(ALLOFILES)
-	@rm -fd $(ALLDIR) obj
+	@rm -fd obj
 	@echo "> $(YELLOW)$(NAME) clean$(DEFAULT)"
 
 fclean: clean

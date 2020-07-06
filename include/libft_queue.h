@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:11:24 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 22:08:35 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/06 03:25:27 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct	s_queue
 }				t_queue;
 
 /*
-** Allocates (with malloc()) and returns a “fresh” queue. The head and tail of
-** queue is initialized to ft_lstnew(content, content_size)
+** Allocates (with ft_memalloc) and returns a “fresh” queue. The head and tail
+** of queue is initialized to ft_lstnew(content, content_size)
 ** If the allocation fails, the function returns NULL.
 */
 t_queue		*ft_quenew(void const *content, size_t content_size);

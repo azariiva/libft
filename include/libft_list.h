@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:39:42 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:52:23 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/06 02:47:31 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,18 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 /*
-** Allocates (with malloc()) and returns a “fresh” link. The variables content
-** and content_size of the new link are initialized by copy of the parameters of
-** the function. If the parameter content is nul, the variable content is
-** initialized to NULL and the variable content_size is initialized to 0 even if
-** the parameter content_size isn’t. The variable next is initialized to NULL.
+** Allocates (with ft_memalloc) and returns a “fresh” link. The variables
+** content and content_size of the new link are initialized by copy of the
+** parameters of the function. If the parameter content is nul, the variable
+** content is initialized to NULL and the variable content_size is initialized
+** to 0 even if the parameter content_size isn’t. The variable next is
+** initialized to NULL.
 ** If the allocation fails, the function returns NULL.
 */
 t_list			*ft_lstnew(void const *content, size_t content_size);
 /*
-** Allocates (with malloc()) and returns a “fresh” link. The content_size of the
-** new link are initialized by copy of the parameter of the function. The
+** Allocates (with ft_memalloc) and returns a “fresh” link. The content_size
+** of the new link are initialized by copy of the parameter of the function. The
 ** variable content is initialized to NULL. The variable next is initialized to
 ** NULL. If the allocation fails, the function returns NULL.
 */
@@ -42,29 +43,29 @@ t_list			*ft_lstnew_ic(size_t content_size);
 /*
 ** Takes as a parameter a link’s pointer address and frees the memory of the
 ** link’s content using the function del given as a parameter, then frees the
-** link’s memory using free(3). Finally, the pointer to the link that was just
+** link’s memory using ft_memdel. Finally, the pointer to the link that was just
 ** freed sets to NULL.
 */
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 /*
 ** Takes as a parameter a link’s pointer address and doesn't free the memory of
-** the link’s content, then frees the link’s memory using free(). Finally, the
-** pointer to the link that was just freed set to NULL.
+** the link’s content, then frees the link’s memory using ft_memdel. Finally,
+** the pointer to the link that was just freed set to NULL.
 */
 void			ft_lstdelone_ic(t_list **alst);
 
 /*
 ** Takes as a parameter the adress of a pointer to a link and frees the memory
 ** of this link and every successors of that link using the functions del and
-** free().
+** ft_lstdelone.
 **  The pointer to the link that was just freed must be set to
 ** NULL.
 */
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 /*
 ** Takes as a parameter the adress of a pointer to a link and frees the memory
-** of this link and every successors of that link using the function free()
-** ignoring content.
+** of this link and every successors of that link using the function
+** ft_lstdelone_ic ignoring content.
 ** Finally the pointer to the link that was just freed must be set to NULL.
 */
 void			ft_lstdel_ic(t_list **alst);
@@ -79,8 +80,8 @@ void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 /*
 ** Iterates a list lst and applies the function f to each link to create a
-** “fresh” list (using malloc(3)) resulting from the successive applications of
-** f. If the allocation fails, the function returns NULL.
+** “fresh” list (using ft_memalloc) resulting from the successive
+** applications of f. If the allocation fails, the function returns NULL.
 */
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 /*
