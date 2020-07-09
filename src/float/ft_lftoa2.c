@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 01:17:35 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/06 01:26:40 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/09 14:54:36 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	round_first_chars(int i, char **result, char **tmp)
 	}
 }
 
-int		ft_lftoa_rounding(long double f_part_c, int precision,
+int			ft_lftoa_rounding(long double f_part_c, int precision,
 				long double *f_part, long long *i_part)
 {
 	long long	n;
@@ -63,7 +63,7 @@ int		ft_lftoa_rounding(long double f_part_c, int precision,
 	return (0);
 }
 
-void	ft_lftoa_add_number(int *i, char **result, long double *f_part)
+void		ft_lftoa_add_number(int *i, char **result, long double *f_part)
 {
 	*f_part *= 10;
 	(*result)[*i] = (long long)*f_part % 10 + '0';
@@ -71,7 +71,7 @@ void	ft_lftoa_add_number(int *i, char **result, long double *f_part)
 	(*result)[*i + 1] = '\0';
 }
 
-void	ft_lftoa_set_other_nums(int i, char **result)
+void		ft_lftoa_set_other_nums(int i, char **result)
 {
 	char	*tmp;
 

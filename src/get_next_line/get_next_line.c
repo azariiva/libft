@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 23:26:01 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/02 00:34:58 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/09 14:49:16 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,12 @@ static int	read_fdlst(t_list *fdlst, char **line)
 	return (res);
 }
 
+int			lstdelandend(t_list **fdlst)
+{
+	ft_lstdel(fdlst, gnl_strdel);
+	return (END);
+}
+
 int			get_next_line(const int fd, char **line)
 {
 	static t_list	*fdlst;
@@ -100,10 +106,7 @@ int			get_next_line(const int fd, char **line)
 	int				res;
 
 	if (fd == -1)
-	{
-		ft_lstdel(&fdlst, gnl_fddel);
-		return (END);
-	}
+		return (lstdelandend(&fdlst));
 	ptr = fdlst;
 	while (ptr)
 	{

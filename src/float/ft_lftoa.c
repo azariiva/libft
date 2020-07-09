@@ -6,14 +6,14 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 01:15:43 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/06 01:27:14 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/09 14:54:04 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_float.h"
 #include "libft_memory.h"
 
-static int		countnumbers(long long n)
+static int	countnumbers(long long n)
 {
 	int	result;
 
@@ -28,7 +28,7 @@ static int		countnumbers(long long n)
 	return (result);
 }
 
-static void		reverse_string(char *str)
+static void	reverse_string(char *str)
 {
 	char	temp;
 	int		index;
@@ -49,7 +49,7 @@ static void		reverse_string(char *str)
 	}
 }
 
-static int				inttostr(long long x, char *result, int d)
+static int	inttostr(long long x, char *result, int d)
 {
 	int			index;
 	long long	temp;
@@ -77,7 +77,7 @@ static int				inttostr(long long x, char *result, int d)
 	return (index);
 }
 
-static void			fill_result(long long i_part, long double f_part,
+static void	fill_result(long long i_part, long double f_part,
 							int precision, char **result)
 {
 	int	i;
@@ -101,7 +101,7 @@ static void			fill_result(long long i_part, long double f_part,
 	}
 }
 
-char			*ft_lftoa(long double n, int precision)
+char		*ft_lftoa(long double n, int precision)
 {
 	long long	i_part;
 	long double	f_part;

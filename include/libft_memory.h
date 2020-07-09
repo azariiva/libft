@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 18:21:51 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:21:54 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/09 15:00:22 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define LIBFT_MEMORY_H
 
-#include <stddef.h>
+# include <stddef.h>
 
 /*
 ** The ft_memset() function writes len bytes of value c (converted to an

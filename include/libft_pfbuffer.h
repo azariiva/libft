@@ -6,13 +6,13 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 02:09:07 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/06 03:21:36 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/09 15:06:55 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBBUF_H
+#ifndef LIBFT_PFBUFFER_H
 
-# define LIBBUF_H
+# define LIBFT_PFBUFFER_H
 
 # ifndef MAX_BUF
 #  define MAX_BUF 64
