@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 18:01:35 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:59:52 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/06 18:38:46 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ t_queue	*ft_quenew(void const *content, size_t content_size)
 
 	if (!(queue = ft_memalloc(sizeof(t_queue))))
 		return (NULL);
-	queue->head = ft_lstnew(content, content_size);
+	queue->head = (content ?
+	ft_lstnew(content, content_size) : ft_lstnew_ic(content_size));
 	queue->tail = queue->head;
 	return (queue);
 }
