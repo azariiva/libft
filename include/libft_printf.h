@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 02:23:03 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/06 15:07:22 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/11 01:57:16 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ typedef struct	s_pf
 # define ANSI_BOLD_CYAN "\e[1;36m"
 # define ANSI_EOC "\e[0m"
 
-int				ft_printf_fd(int fd, const char *format, ...);
 int				ft_printf(const char *format, ...);
 void			parse_placeholder(t_pf *pf, const char *fmt, va_list va, \
 									int *i);
