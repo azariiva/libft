@@ -6,7 +6,7 @@
 #    By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 17:37:07 by blinnea           #+#    #+#              #
-#    Updated: 2020/07/06 02:56:49 by blinnea          ###   ########.fr        #
+#    Updated: 2020/07/10 20:11:32 by blinnea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ ALLOFILES =	$(LSTOFILES) $(STROFILES) $(CTPOFILES) $(IOOFILES) $(QUEOFILES) \
 			$(MEMOFILES) $(INTOFILES) $(GNLOFILES) $(FLTOFILES) $(PFBOFILES) \
 			$(PFOFILES)
 
-.PHONY: clean fclean re all
+.PHONY: dir clean fclean re all
 
 all: dir $(NAME).a
 
