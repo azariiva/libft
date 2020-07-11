@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 16:09:17 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/06 03:01:30 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/11 22:29:59 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 # include "libft_string.h"
 # include "libft_memory.h"
 # include "libft_ctype.h"
+# include "libft_getopt.h"
 
 #endif

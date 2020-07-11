@@ -6,7 +6,7 @@
 #    By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 17:37:07 by blinnea           #+#    #+#              #
-#    Updated: 2020/07/10 20:11:32 by blinnea          ###   ########.fr        #
+#    Updated: 2020/07/11 23:44:04 by blinnea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ INT_H =		include/$(NAME)_integer.h
 GNL_H =		include/$(NAME)_get_next_line.h
 FLT_H =		include/$(NAME)_float.h
 PFB_H =		include/$(NAME)_pfbuffer.h
+GOP_H =		include/$(NAME)_getopt.h
 
 # **************************************************************************** #
 #                                 FILENAMES                                    #
@@ -57,6 +58,7 @@ GNLFILES =	$(shell find src/get_next_line -name '*.c')
 FLTFILES =	$(shell find src/float -name '*.c')
 PFBFILES =	$(shell find src/pfbuffer -name '*.c')
 PFFILES =	$(shell find src/printf -name '*.c')
+GOPFILES =	$(shell find src/getopt -name '*.c')
 
 LSTOFILES =	$(addprefix obj/, $(LSTFILES:src/list/%.c=%.o))
 STROFILES =	$(addprefix obj/, $(STRFILES:src/string/%.c=%.o))
@@ -69,10 +71,11 @@ GNLOFILES = $(addprefix obj/, $(GNLFILES:src/get_next_line/%.c=%.o))
 FLTOFILES = $(addprefix obj/, $(FLTFILES:src/float/%.c=%.o))
 PFBOFILES = $(addprefix obj/, $(PFBFILES:src/pfbuffer/%.c=%.o))
 PFOFILES =	$(addprefix obj/, $(PFFILES:src/printf/%.c=%.o))
+GOPOFILES =	$(addprefix obj/, $(GOPFILES:src/getopt/%.c=%.o))
 
 ALLOFILES =	$(LSTOFILES) $(STROFILES) $(CTPOFILES) $(IOOFILES) $(QUEOFILES) \
 			$(MEMOFILES) $(INTOFILES) $(GNLOFILES) $(FLTOFILES) $(PFBOFILES) \
-			$(PFOFILES)
+			$(PFOFILES) $(GOPOFILES)
 
 .PHONY: dir clean fclean re all
 
@@ -139,6 +142,11 @@ obj/%.o: src/pfbuffer/%.c $(MEM_H) $(STR_H)
 
 # create printf object files
 obj/%.o: src/printf/%.c $(MEM_H) $(STR_H) $(INT_H) $(PFB_H)
+	@$(CC) $(CF) -c $< -o $@ -I include
+	@echo "$(GREENB) $(DEFAULT)\c"
+
+# create getopt object files
+obj/%.o: src/getopt/%.c $(STR_H) $(GOP_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
