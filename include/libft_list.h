@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:39:42 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/06 02:47:31 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/12 16:56:13 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct	s_list
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
+
 /*
 ** Allocates (with ft_memalloc) and returns a “fresh” link. The variables
 ** content and content_size of the new link are initialized by copy of the
@@ -74,6 +75,11 @@ void			ft_lstdel_ic(t_list **alst);
 ** Adds the element new at the beginning of the list.
 */
 void			ft_lstadd(t_list **alst, t_list *new);
+/*
+** Adds the element new before the element e, where cmp(e, new) is true.
+*/
+void			ft_lstadd_sorted(t_list **alst, t_list *new,
+								int (*cmp)(t_list *cur, t_list *new));
 /*
 ** Iterates the list lst and applies the function f to each link.
 */

@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:38:36 by fhilary           #+#    #+#             */
-/*   Updated: 2020/07/11 01:57:22 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/12 17:00:30 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,27 @@ int			ft_printf(const char *fmt, ...)
 	if ((pf = (t_pf*)ft_memalloc(sizeof(t_pf))) == NULL)
 		return (-1);
 	pf->buf.fd = STDOUT_FILENO;
+	va_start(va, fmt);
+	if (loop_format(pf, fmt, va))
+		return (-1);
+	ft_fflush(&(pf->buf));
+	va_end(va);
+	length = pf->len;
+	ft_memdel((void **)&pf);
+	return (length);
+}
+
+int			ft_printf_fd(int fd, const char *fmt, ...)
+{
+	int		length;
+	t_pf	*pf;
+	va_list	va;
+
+	if (!fmt)
+		return (-1);
+	if ((pf = (t_pf*)ft_memalloc(sizeof(t_pf))) == NULL)
+		return (-1);
+	pf->buf.fd = fd;
 	va_start(va, fmt);
 	if (loop_format(pf, fmt, va))
 		return (-1);
