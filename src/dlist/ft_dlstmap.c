@@ -6,24 +6,20 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 02:26:45 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/16 02:30:05 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/16 12:18:52 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_dlist.h"
 #include <stddef.h>
 
-t_dlist	*ft_dlstmap(t_dlist *lst, t_dlist *(*f)(t_dlist *elem))
+static t_dlist	*ft_dlstmap2(t_dlist *lst, t_dlist *(*f)(t_dlist *elem))
 {
-	t_dlist	*next;
-	t_dlist	*prev;
-	t_dlist	*head;
-	t_dlist	*ptr;
+	t_dlist		*next;
+	t_dlist		*head;
+	t_dlist		*ptr;
 
-	if (!lst)
-		return (NULL);
 	next = lst->next;
-	prev = lst->prev;
 	if (!(head = f(lst)))
 		return (NULL);
 	lst = next;
@@ -36,6 +32,20 @@ t_dlist	*ft_dlstmap(t_dlist *lst, t_dlist *(*f)(t_dlist *elem))
 		ptr = ptr->next;
 		lst = next;
 	}
+	return (head);
+}
+
+t_dlist			*ft_dlstmap(t_dlist *lst, t_dlist *(*f)(t_dlist *elem))
+{
+	t_dlist	*prev;
+	t_dlist	*head;
+	t_dlist	*ptr;
+
+	if (!lst)
+		return (NULL);
+	prev = lst->prev;
+	if (!(ft_dlstmap2(lst, f)))
+		return (NULL);
 	lst = prev;
 	ptr = head->prev;
 	while (lst && ptr)
