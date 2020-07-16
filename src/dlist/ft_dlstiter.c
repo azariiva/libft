@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_dlstiter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 16:09:17 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/16 02:42:53 by blinnea          ###   ########.fr       */
+/*   Created: 2020/07/16 02:20:55 by blinnea           #+#    #+#             */
+/*   Updated: 2020/07/16 02:26:26 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+#include "libft_dlist.h"
 
-# define LIBFT_H
+void	ft_dlstiter_b(t_dlist *lst, void (*f)(t_dlist *elem))
+{
+	t_dlist	*prev;
 
-# include "libft_printf.h"
-# include "libft_get_next_line.h"
-# include "libft_io.h"
-# include "libft_queue.h"
-# include "libft_integer.h"
-# include "libft_list.h"
-# include "libft_string.h"
-# include "libft_memory.h"
-# include "libft_ctype.h"
-# include "libft_getopt.h"
-# include "libft_dlist.h"
+	while (lst)
+	{
+		prev = lst->prev;
+		f(lst);
+		lst = prev;
+	}
+}
 
-#endif
+void	ft_dlstiter_f(t_dlist *lst, void (*f)(t_dlist *elem))
+{
+	t_dlist	*next;
+
+	while (lst)
+	{
+		next = lst->next;
+		f(lst);
+		lst = next;
+	}
+}

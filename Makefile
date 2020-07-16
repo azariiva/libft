@@ -6,7 +6,7 @@
 #    By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 17:37:07 by blinnea           #+#    #+#              #
-#    Updated: 2020/07/11 23:44:04 by blinnea          ###   ########.fr        #
+#    Updated: 2020/07/16 02:35:08 by blinnea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,39 +43,42 @@ GNL_H =		include/$(NAME)_get_next_line.h
 FLT_H =		include/$(NAME)_float.h
 PFB_H =		include/$(NAME)_pfbuffer.h
 GOP_H =		include/$(NAME)_getopt.h
+DLST_H =	include/$(NAME)_dlist.h
 
 # **************************************************************************** #
 #                                 FILENAMES                                    #
 # **************************************************************************** #
-LSTFILES =	$(shell find src/list -name '*.c')
-STRFILES =	$(shell find src/string -name '*.c')
-CTPFILES =	$(shell find src/ctype -name '*.c')
-IOFILES =	$(shell find src/io -name '*.c')
-QUEFILES =	$(shell find src/queue -name '*.c')
-MEMFILES =	$(shell find src/memory -name '*.c')
-INTFILES =	$(shell find src/integer -name '*.c')
-GNLFILES =	$(shell find src/get_next_line -name '*.c')
-FLTFILES =	$(shell find src/float -name '*.c')
-PFBFILES =	$(shell find src/pfbuffer -name '*.c')
-PFFILES =	$(shell find src/printf -name '*.c')
-GOPFILES =	$(shell find src/getopt -name '*.c')
+LSTFILES =		$(shell find src/list -name '*.c')
+STRFILES =		$(shell find src/string -name '*.c')
+CTPFILES =		$(shell find src/ctype -name '*.c')
+IOFILES =		$(shell find src/io -name '*.c')
+QUEFILES =		$(shell find src/queue -name '*.c')
+MEMFILES =		$(shell find src/memory -name '*.c')
+INTFILES =		$(shell find src/integer -name '*.c')
+GNLFILES =		$(shell find src/get_next_line -name '*.c')
+FLTFILES =		$(shell find src/float -name '*.c')
+PFBFILES =		$(shell find src/pfbuffer -name '*.c')
+PFFILES =		$(shell find src/printf -name '*.c')
+GOPFILES =		$(shell find src/getopt -name '*.c')
+DLSTFILES =		$(shell find src/dlist -name '*.c')
 
-LSTOFILES =	$(addprefix obj/, $(LSTFILES:src/list/%.c=%.o))
-STROFILES =	$(addprefix obj/, $(STRFILES:src/string/%.c=%.o))
-CTPOFILES =	$(addprefix obj/, $(CTPFILES:src/ctype/%.c=%.o))
-IOOFILES =	$(addprefix obj/, $(IOFILES:src/io/%.c=%.o))
-QUEOFILES =	$(addprefix obj/, $(QUEFILES:src/queue/%.c=%.o))
-MEMOFILES =	$(addprefix obj/, $(MEMFILES:src/memory/%.c=%.o))
-INTOFILES =	$(addprefix obj/, $(INTFILES:src/integer/%.c=%.o))
-GNLOFILES = $(addprefix obj/, $(GNLFILES:src/get_next_line/%.c=%.o))
-FLTOFILES = $(addprefix obj/, $(FLTFILES:src/float/%.c=%.o))
-PFBOFILES = $(addprefix obj/, $(PFBFILES:src/pfbuffer/%.c=%.o))
-PFOFILES =	$(addprefix obj/, $(PFFILES:src/printf/%.c=%.o))
-GOPOFILES =	$(addprefix obj/, $(GOPFILES:src/getopt/%.c=%.o))
+LSTOFILES =		$(addprefix obj/, $(LSTFILES:src/list/%.c=%.o))
+STROFILES =		$(addprefix obj/, $(STRFILES:src/string/%.c=%.o))
+CTPOFILES =		$(addprefix obj/, $(CTPFILES:src/ctype/%.c=%.o))
+IOOFILES =		$(addprefix obj/, $(IOFILES:src/io/%.c=%.o))
+QUEOFILES =		$(addprefix obj/, $(QUEFILES:src/queue/%.c=%.o))
+MEMOFILES =		$(addprefix obj/, $(MEMFILES:src/memory/%.c=%.o))
+INTOFILES =		$(addprefix obj/, $(INTFILES:src/integer/%.c=%.o))
+GNLOFILES = 	$(addprefix obj/, $(GNLFILES:src/get_next_line/%.c=%.o))
+FLTOFILES = 	$(addprefix obj/, $(FLTFILES:src/float/%.c=%.o))
+PFBOFILES = 	$(addprefix obj/, $(PFBFILES:src/pfbuffer/%.c=%.o))
+PFOFILES =		$(addprefix obj/, $(PFFILES:src/printf/%.c=%.o))
+GOPOFILES =		$(addprefix obj/, $(GOPFILES:src/getopt/%.c=%.o))
+DLSTOFILES =	$(addprefix obj/, $(DLSTFILES:src/dlist/%.c=%.o))
 
-ALLOFILES =	$(LSTOFILES) $(STROFILES) $(CTPOFILES) $(IOOFILES) $(QUEOFILES) \
-			$(MEMOFILES) $(INTOFILES) $(GNLOFILES) $(FLTOFILES) $(PFBOFILES) \
-			$(PFOFILES) $(GOPOFILES)
+ALLOFILES =		$(LSTOFILES) $(STROFILES) $(CTPOFILES) $(IOOFILES) $(QUEOFILES)\
+				$(MEMOFILES) $(INTOFILES) $(GNLOFILES) $(FLTOFILES)\
+				$(PFBOFILES) $(PFOFILES) $(GOPOFILES) $(DLSTOFILES)
 
 .PHONY: dir clean fclean re all
 
@@ -147,6 +150,11 @@ obj/%.o: src/printf/%.c $(MEM_H) $(STR_H) $(INT_H) $(PFB_H)
 
 # create getopt object files
 obj/%.o: src/getopt/%.c $(STR_H) $(GOP_H)
+	@$(CC) $(CF) -c $< -o $@ -I include
+	@echo "$(GREENB) $(DEFAULT)\c"
+
+# create dlist object files
+obj/%.o: src/dlist/%.c $(FT_H) $(LST_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
