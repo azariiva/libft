@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 02:26:45 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/16 12:18:52 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/16 13:45:49 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_dlist			*ft_dlstmap(t_dlist *lst, t_dlist *(*f)(t_dlist *elem))
 	if (!lst)
 		return (NULL);
 	prev = lst->prev;
-	if (!(ft_dlstmap2(lst, f)))
+	if (!(head = ft_dlstmap2(lst, f)))
 		return (NULL);
 	lst = prev;
 	ptr = head->prev;

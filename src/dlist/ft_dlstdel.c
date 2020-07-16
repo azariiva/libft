@@ -6,18 +6,20 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 02:16:57 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/16 02:36:46 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/16 12:41:16 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_dlist.h"
 #include <stddef.h>
 
-void		ft_lstdel(t_dlist **alst, void (*del)(void *, size_t))
+void		ft_dlstdel(t_dlist **alst, void (*del)(void *, size_t))
 {
 	t_dlist	*ptr;
 	t_dlist	*todel;
 
+	if (!alst || !*alst)
+		return ;
 	ptr = (*alst)->prev;
 	while (ptr)
 	{
