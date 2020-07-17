@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 01:50:52 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/16 02:35:16 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/17 15:16:06 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void			ft_dlstadd(t_dlist **alst, t_dlist *new);
 void			ft_dlstiter_f(t_dlist *lst, void (*f)(t_dlist *elem));
 void			ft_dlstiter_b(t_dlist *lst, void (*f)(t_dlist *elem));
 t_dlist			*ft_dlstmap(t_dlist *lst, t_dlist *(f)(t_dlist *elem));
+void			ft_dlstsort(t_dlist **dlst, int (*cmp)(t_dlist *, t_dlist *));
 
 #endif
