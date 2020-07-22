@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 23:26:01 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/09 14:49:16 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/22 15:49:14 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static int	read_fdlst(t_list *fdlst, char **line)
 
 int			lstdelandend(t_list **fdlst)
 {
-	ft_lstdel(fdlst, gnl_strdel);
+	ft_lstdel(fdlst, gnl_fddel);
 	return (END);
 }
 
