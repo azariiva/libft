@@ -6,7 +6,7 @@ function CrankVolumeUp {
 
 while (true)
 do
-	#CrankVolumeUp
+	CrankVolumeUp
 	afplay -r 0.5 P
 done
 
