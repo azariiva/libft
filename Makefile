@@ -6,7 +6,7 @@
 #    By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 17:37:07 by blinnea           #+#    #+#              #
-#    Updated: 2020/07/27 19:31:56 by blinnea          ###   ########.fr        #
+#    Updated: 2020/07/27 19:37:04 by blinnea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ ALLOFILES =		$(LSTOFILES) $(STROFILES) $(CTPOFILES) $(IOOFILES) $(QUEOFILES)\
 all: dir $(NAME).a
 
 $(NAME).a: Makefile $(ALLOFILES)
-	@make -C .ArtemLoh
+	@make -C src/string/.ArtemLoh
 	@ar rc $@ $(ALLOFILES)
 	@ranlib $@
 	@echo "\n> $(GREEN)$(NAME) created$(DEFAULT)"
