@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_getopt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 21:10:03 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/25 22:00:23 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/27 21:10:48 by fhilary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int			ft_getopt(const t_acav acav, const char *optstring)
 	ptr = acav.argv[g_optind];
 	if (g_optind >= acav.argc || (ptr == acav.argv[g_optind] &&
 	*ptr++ != '-'))
+		return (-1);
+	if (!*ptr)
 		return (-1);
 	if (!ft_strcmp(ptr, "-"))
 	{
