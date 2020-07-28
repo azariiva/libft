@@ -10,7 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-SHELL=/bin/zsh
 # **************************************************************************** #
 #                                 COLOURS                                      #
 # **************************************************************************** #
@@ -85,7 +84,6 @@ ALLOFILES =		$(LSTOFILES) $(STROFILES) $(CTPOFILES) $(IOOFILES) $(QUEOFILES)\
 all: dir $(NAME).a
 
 $(NAME).a: Makefile $(ALLOFILES)
-	@make -C src/string/.ArtemLoh
 	@ar rc $@ $(ALLOFILES)
 	@ranlib $@
 	@echo "\n> $(GREEN)$(NAME) created$(DEFAULT)"

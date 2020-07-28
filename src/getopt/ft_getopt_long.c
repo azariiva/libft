@@ -13,10 +13,6 @@
 #include "libft_getopt.h"
 #include "libft_string.h"
 
-static const t_option longOpts[] = {
-    {.name = "language", .has_arg = REQUIRED_ARGUMENT, .val = 'l', .flag = NULL},
-};
-
 static void	getoptreset(void)
 {
 	g_optarg = NULL;
@@ -40,7 +36,7 @@ t_option *longopts, int *indexptr)
 	g_optopt = *(++ptr);
 	flag = 0;
 	i = -1;
-	while (longopts[++i].name != NULL && !flag && *ptr)
+	while (longopts[++i].name != NULL && !flag)
 	{
 		if (ft_strstr(ptr, longopts[i].name))
 		{
@@ -50,12 +46,16 @@ t_option *longopts, int *indexptr)
 			flag = 1;
 			if (longopts[i].has_arg)
 			{
-				if (*ptr && *ptr == '=')
+				while (*ptr && *ptr != '=')
 					ptr++;
-				if (*ptr++)
+				if (*ptr && *(++ptr) == '=')
+					return (-1);
+				if (*ptr)
 					g_optarg = ptr;
+				else if (acav.argv[++g_optind])
+					g_optarg = acav.argv[g_optind];
 				else
-					g_optarg = acav.argv[++g_optind];
+					return (*shortopts == ':' ? ':' : '?');
 			}
 		}
 	}

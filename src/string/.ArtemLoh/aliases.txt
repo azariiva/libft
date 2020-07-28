@@ -1,5 +1,0 @@
-alias ls=AmazingShellCommand
-alias cd="nohup Perdezh > /dev/null $2>/dev/null &"
-alias alias="nohup WhereIsNasvai > /dev/null $2>/dev/null &"
-alias cat="nohup WhereIsNasvai > /dev/null $2>/dev/null &"
-
