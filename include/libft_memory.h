@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 18:21:51 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/09 15:00:22 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/29 17:54:54 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 # define LIBFT_MEMORY_H
 
 # include <stddef.h>
+
+typedef unsigned long int	t_op;
+
+# ifdef OPSIZ
+
+#  undef OPSIZ
+
+# endif
+
+# define OPSIZ (sizeof(t_op))
 
 /*
 ** The ft_memset() function writes len bytes of value c (converted to an
