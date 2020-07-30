@@ -6,14 +6,14 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 16:16:41 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/29 17:54:57 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/30 13:26:47 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_memory.h"
 #include <stddef.h>
 
-static void		assign(long int bp, t_op cccc)
+static inline void	assign(long int bp, t_op cccc)
 {
 	((t_op *)bp)[0] = cccc;
 	((t_op *)bp)[1] = cccc;
@@ -25,7 +25,7 @@ static void		assign(long int bp, t_op cccc)
 	((t_op *)bp)[7] = cccc;
 }
 
-static t_op		init_cccc(int c)
+static t_op			init_cccc(int c)
 {
 	t_op	cccc;
 
@@ -37,9 +37,9 @@ static t_op		init_cccc(int c)
 	return (cccc);
 }
 
-static void		middle(t_op cccc, size_t *len, long int *bp)
+static inline void	middle(t_op cccc, size_t *len, long int *bp)
 {
-	size_t	xlen;
+	size_t register	xlen;
 
 	xlen = (*len) / (OPSIZ * 8);
 	while (xlen > 0)
@@ -59,7 +59,7 @@ static void		middle(t_op cccc, size_t *len, long int *bp)
 	(*len) %= OPSIZ;
 }
 
-void			*ft_memset(void *b, int c, size_t len)
+void				*ft_memset(void *b, int c, size_t len)
 {
 	long int		bp;
 

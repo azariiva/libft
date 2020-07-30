@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 20:47:27 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/25 21:53:39 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/07/30 14:51:16 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct	s_acav
 	char*const	*argv;
 }				t_acav;
 
-int	ft_getopt(const t_acav acav, const char *optstring);
-int	ft_getopt_long(const t_acav acav, const char *shortopts,
+int				ft_getopt(const t_acav acav, const char *optstring);
+int				ft_getopt_long(const t_acav acav, const char *shortopts,
 const t_option *longopts, int *indexptr);
 
 #endif
