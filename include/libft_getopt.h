@@ -6,7 +6,7 @@
 /*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 20:47:27 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/03 15:27:11 by fhilary          ###   ########.fr       */
+/*   Updated: 2020/08/03 18:30:02 by fhilary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,9 @@ typedef struct	s_acav
 int				ft_getopt(const t_acav acav, const char *optstring);
 int				ft_getopt_long(const t_acav acav, const char *shortopts,
 t_option *longopts, int *indexptr);
+int				ft_getopt_long_only(const t_acav acav, const char *shortopts,
+t_option *longopts, int *indexptr);
+void			getoptreset(void);
+int				getoptint(char *ptr, t_option *longopts);
 
 #endif

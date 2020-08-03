@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getopt_long.c                                   :+:      :+:    :+:   */
+/*   ft_getopt_long_only.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/25 17:47:55 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/03 18:39:20 by fhilary          ###   ########.fr       */
+/*   Created: 2020/08/03 18:24:44 by fhilary           #+#    #+#             */
+/*   Updated: 2020/08/03 18:25:57 by fhilary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_getopt.h"
 #include "libft_string.h"
 
-int			getoptint(char *ptr, t_option *longopts)
-{
-	int	i;
-
-	i = -1;
-	while (longopts[++i].name != NULL)
-	{
-		if (!ft_strccmp(ptr, longopts[i].name, '='))
-			return (i);
-	}
-	return (-1);
-}
-
-int			ft_getopt_long(const t_acav acav, const char *shortopts,
+int			ft_getopt_long_only(const t_acav acav, const char *shortopts,
 t_option *longopts, int *indexptr)
 {
 	char	*ptr;
@@ -39,7 +26,7 @@ t_option *longopts, int *indexptr)
 		return (-1);
 	g_optarg = 0;
 	if (longopts && acav.argv[g_optind][0] == '-' &&
-	acav.argv[g_optind][1] == '-' && acav.argv[g_optind][2])
+	acav.argv[g_optind][1] && acav.argv[g_optind][1] != '-')
 	{
 		ptr = acav.argv[g_optind];
 		if (*(++ptr) == '-')
@@ -69,7 +56,7 @@ t_option *longopts, int *indexptr)
 				*(longopts[i].flag) = longopts[i].val;
 				return (0);
 			}
-			return (longopts[i].val);
+			return (longopts[*indexptr].val);
 		}
 		if (acav.argv[g_optind][1] == '-')
 		{

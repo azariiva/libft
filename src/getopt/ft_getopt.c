@@ -6,7 +6,7 @@
 /*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 21:10:03 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/27 21:10:48 by fhilary          ###   ########.fr       */
+/*   Updated: 2020/08/03 18:25:22 by fhilary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ const char **ptr)
 	return (*op);
 }
 
-static void	getoptreset(void)
+void	getoptreset(void)
 {
 	g_optarg = NULL;
 	g_optopt = 0;

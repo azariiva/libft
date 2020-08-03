@@ -52,6 +52,8 @@ int main(int ac, char **av)
         case 'v':
             printf("vvvvvvvvvvv\n");
             break;
+		case '?':
+			printf("Error: %s\n", av[g_optind]);
         };
     }
 
