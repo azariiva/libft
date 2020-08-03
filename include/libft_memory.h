@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_memory.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 18:21:51 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/09 15:00:22 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/08/03 15:26:11 by fhilary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void			*ft_memchr(const void *s, int c, size_t n);
 ** strings are assumed to be n bytes long.
 */
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
+int				ft_memccmp(const void *haystack, const void *needle, int c,
+size_t n);
 /*
 ** The ft_bzero() function writes n zeroed bytes to the string s.  If n is zero,
 ** ft_bzero() does nothing.

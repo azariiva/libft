@@ -6,7 +6,7 @@
 /*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 20:47:27 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/27 18:08:33 by fhilary          ###   ########.fr       */
+/*   Updated: 2020/08/03 15:27:11 by fhilary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 # define LIBFT_GETOPT_H
 
+# define NO_ARGUMENT        0
+# define REQUIRED_ARGUMENT  1
+# define OPTIONAL_ARGUMENT  2
+
 extern char		*g_optarg;
 extern int		g_optopt;
 extern int		g_optind;
 extern int		g_optreset;
-
-#define NO_ARGUMENT        0
-#define REQUIRED_ARGUMENT  1
-#define OPTIONAL_ARGUMENT  2
 
 typedef struct	s_option
 {
@@ -37,8 +37,8 @@ typedef struct	s_acav
 	char*const	*argv;
 }				t_acav;
 
-int	ft_getopt(const t_acav acav, const char *optstring);
-int	ft_getopt_long(const t_acav acav, const char *shortopts,
+int				ft_getopt(const t_acav acav, const char *optstring);
+int				ft_getopt_long(const t_acav acav, const char *shortopts,
 t_option *longopts, int *indexptr);
 
 #endif

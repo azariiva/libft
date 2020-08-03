@@ -6,7 +6,7 @@
 /*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/25 17:47:55 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/27 21:12:23 by fhilary          ###   ########.fr       */
+/*   Updated: 2020/08/03 15:12:06 by fhilary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,21 @@ static void	getoptreset(void)
 	g_optreset = 0;
 }
 
-int	ft_getopt_long(const t_acav acav, const char *shortopts,
+static int	getoptint(char *ptr, t_option *longopts)
+{
+	int i;
+
+	i = -1;
+	while (longopts[++i].name != NULL)
+	{
+		if (!ft_strccmp(ptr, longopts[i].name, '='))
+			return (i);
+	}
+	return (-1);
+}
+
+
+int			ft_getopt_long(const t_acav acav, const char *shortopts,
 t_option *longopts, int *indexptr)
 {
 	char 		*ptr;
@@ -34,36 +48,25 @@ t_option *longopts, int *indexptr)
 		return (-1);
 	ptr = acav.argv[g_optind];
 	g_optopt = *(++ptr);
-	flag = 0;
-	i = -1;
-	while (longopts[++i].name != NULL && !flag)
-	{
-		if (ft_strstr(ptr, longopts[i].name))
-		{
-			if (longopts[i].flag)
-				*(longopts[i].flag) = longopts[i].val;
-			*indexptr = i;
-			flag = 1;
-			if (longopts[i].has_arg)
-			{
-				while (*ptr && *ptr != '=')
-					ptr++;
-				if (*ptr && *(++ptr) == '=')
-					return (-1);
-				if (*ptr)
-					g_optarg = ptr;
-				else if (acav.argv[++g_optind])
-					g_optarg = acav.argv[g_optind];
-				else
-					return (*shortopts == ':' ? ':' : '?');
-			}
-		}
-	}
-	if (!flag)
+	i = getoptint(ptr, longopts);
+	if (i == -1)
 		return (ft_getopt(acav, shortopts));
-	else
+	if (longopts[i].flag)
+		*(longopts[i].flag) = longopts[i].val;
+	*indexptr = i;
+	if (longopts[i].has_arg)
 	{
-		g_optind++;
-		return (longopts[*indexptr].val);
+		while (*ptr && *ptr != '=')
+			ptr++;
+		if (*ptr && *(++ptr) == '=')
+			return (-1);
+		if (*ptr)
+			g_optarg = ptr;
+		else if (acav.argv[++g_optind])
+			g_optarg = acav.argv[g_optind];
+		else
+			return (*shortopts == ':' ? ':' : '?');
 	}
+	g_optind++;
+	return (longopts[*indexptr].val);
 }
