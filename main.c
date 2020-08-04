@@ -41,7 +41,7 @@ static void		getOptReference(int ac, char **av)
 	int	res;
 
 	index = 0;
-	while ((res = getopt_long(ac, av, shortopts, defLongOpts, &index)) != -1)
+	while ((res = getopt_long_only(ac, av, shortopts, defLongOpts, &index)) != -1)
     {
 		if (defFlag == 'l')
 			showReferenceStat("language2", index);
@@ -94,7 +94,7 @@ static void		getOptTest(int ac, char **av)
     int index;
 
     index = 0;
-    while ((res = ft_getopt_long((t_acav){.ac=ac, .av=av}, shortopts, ourLongOpts, &index)) != -1)
+    while ((res = ft_getopt_long_only((t_acav){.ac=ac, .av=av}, shortopts, ourLongOpts, &index)) != -1)
     {
 		if (ourFlags == 'l')
 			showTestStat("language2", index);
@@ -132,6 +132,7 @@ static void		getOptTest(int ac, char **av)
 int main(int ac, char **av)
 {
 	getOptReference(ac, av);
+	printf("------------------\n");
 	getOptTest(ac, av);
 
     return 0;

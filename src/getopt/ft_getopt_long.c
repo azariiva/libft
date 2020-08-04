@@ -6,7 +6,7 @@
 /*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/25 17:47:55 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/04 21:11:20 by fhilary          ###   ########.fr       */
+/*   Updated: 2020/08/04 22:03:52 by fhilary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_opterr err)
 static int	getopt_helper(const t_acav acav, const char*const shortopts,
 t_option*const longopts, int i)
 {
-	g_optopt = longopts[i].val;
 	if (g_optarg == NULL && longopts[i].has_arg == REQUIRED_ARGUMENT)
 	{
 		if (!((g_optarg = acav.av[g_optind]) && g_optind++))
@@ -55,8 +54,13 @@ t_option*const longopts, int i)
 			getopt_msg(acav, longopts[i].name, REQUIRES_ARG));
 		}
 	}
-	return (longopts[i].flag && (*(longopts[i].flag) = longopts[i].val) ?
-	0 : longopts[i].val);
+	if (longopts[i].flag)
+	{
+		*(longopts[i].flag) = longopts[i].val;
+		return (0);
+	}
+	g_optopt = longopts[i].val;
+	return (longopts[i].val);
 }
 
 int			ft_getopt_long(const t_acav acav, const char*const shortopts,
@@ -96,22 +100,15 @@ t_option*const longopts, int*const indexptr)
 	int		i;
 	int		flag;
 
-	if (!g_optind || g_optreset)
-		ft_getoptreset();
-	if (g_optind >= acav.ac || acav.av[g_optind][0] != '-')
+	(!g_optind || g_optreset ? ft_getoptreset() : 0);
+	if (g_optind >= acav.ac || acav.av[g_optind][0] != '-' || (g_optarg = NULL))
 		return (-1);
-	g_optarg = 0;
-	if (!(longopts &&
-	((acav.av[g_optind][1] == '-' && acav.av[g_optind][2]) ||
+	if (!(longopts && ((acav.av[g_optind][1] == '-' && acav.av[g_optind][2]) ||
 	(acav.av[g_optind][1] && acav.av[g_optind][1] != '-'))))
 		return (ft_getopt(acav, shortopts));
-	ptr = acav.av[g_optind];
-	if (*(++ptr) == '-')
-		ptr++;
-	g_optind++;
-	if ((i = getoptint(ptr, longopts)) != -1)
+	(*(ptr = acav.av[g_optind] + 1) == '-') ? ptr++ : 0;
+	if (++g_optind && (i = getoptint(ptr, longopts)) != -1)
 	{
-		g_optopt = longopts[i].val;
 		while (*ptr && *ptr != '=')
 			ptr++;
 		if (*ptr == '=')
@@ -120,22 +117,8 @@ t_option*const longopts, int*const indexptr)
 				return (getopt_msg(acav, longopts[i].name, DOESNT_ALLOW_ARG));
 			g_optarg = ptr + 1;
 		}
-		else if (longopts[i].has_arg == REQUIRED_ARGUMENT)
-		{
-			if (!(g_optarg = acav.av[g_optind]))
-			{
-				return (*shortopts == ':' ? ':' :
-				getopt_msg(acav, longopts[i].name, REQUIRES_ARG));
-			}
-			g_optind++;
-		}
 		(indexptr ? *indexptr = i : 0);
-		if (longopts[i].flag)
-		{
-			*(longopts[i].flag) = longopts[i].val;
-			return (0);
-		}
-		return (longopts[i].val);
+		return (getopt_helper(acav, shortopts, longopts, i));
 	}
 	return (getopt_msg(acav, acav.av[g_optind - 1], UNRECOGNIZED_OPTION));
 }
