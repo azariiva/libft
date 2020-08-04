@@ -6,7 +6,7 @@
 /*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 20:47:27 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/03 18:30:02 by fhilary          ###   ########.fr       */
+/*   Updated: 2020/08/04 21:11:02 by fhilary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,22 @@ typedef struct	s_option
 
 typedef struct	s_acav
 {
-	const int			argc;
-	char*const*const	argv;
+	const int			ac;
+	char*const*const	av;
 }				t_acav;
+
+typedef enum	e_opterr
+{
+	UNRECOGNIZED_OPTION,
+	DOESNT_ALLOW_ARG,
+	REQUIRES_ARG
+}				t_opterr;
 
 int				ft_getopt(const t_acav acav, const char *optstring);
 int				ft_getopt_long(const t_acav acav, const char *shortopts,
 t_option *longopts, int *indexptr);
 int				ft_getopt_long_only(const t_acav acav, const char *shortopts,
 t_option *longopts, int *indexptr);
-void			getoptreset(void);
-int				getoptint(char *ptr, t_option *longopts);
+void			ft_getoptreset(void);
 
 #endif
