@@ -41,9 +41,7 @@ t_option *longopts, int *indexptr)
 	if (longopts && acav.argv[g_optind][0] == '-' &&
 	acav.argv[g_optind][1] == '-' && acav.argv[g_optind][2])
 	{
-		ptr = acav.argv[g_optind];
-		if (*(++ptr) == '-')
-			ptr++;
+		ptr = acav.argv[g_optind] + 2;
 		if ((i = getoptint(ptr, longopts)) != -1)
 		{
 			g_optind++;

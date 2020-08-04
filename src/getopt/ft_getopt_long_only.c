@@ -13,8 +13,8 @@
 #include "libft_getopt.h"
 #include "libft_string.h"
 
-int			ft_getopt_long_only(const t_acav acav, const char *shortopts,
-t_option *longopts, int *indexptr)
+int			ft_getopt_long_only(const t_acav acav, const char*const shortopts,
+t_option*const longopts, int*const indexptr)
 {
 	char	*ptr;
 	int		i;
@@ -22,11 +22,13 @@ t_option *longopts, int *indexptr)
 
 	if (!g_optind || g_optreset)
 		getoptreset();
-	if (g_optind >= acav.argc || !acav.argv[g_optind])
+	if (g_optind >= acav.argc || acav.argv[g_optind][0] != '-')
 		return (-1);
 	g_optarg = 0;
-	if (longopts && acav.argv[g_optind][0] == '-' &&
-	acav.argv[g_optind][1] && acav.argv[g_optind][1] != '-')
+
+	if (longopts ||
+	((acav.argv[g_optind][1] == '-' && acav.argv[g_optind][2]) &&
+	(acav.argv[g_optind][1] && acav.argv[g_optind][1] != '-')))
 	{
 		ptr = acav.argv[g_optind];
 		if (*(++ptr) == '-')

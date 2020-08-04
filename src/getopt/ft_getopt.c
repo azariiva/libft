@@ -13,11 +13,6 @@
 #include "libft_getopt.h"
 #include "libft_string.h"
 
-char		*g_optarg = NULL;
-int			g_optopt = 0;
-int			g_optind = 1;
-int			g_optreset = 1;
-
 static int	helper(const t_acav acav, const char *opstring,
 const char **ptr)
 {
@@ -54,7 +49,7 @@ int			ft_getopt(const t_acav acav, const char *optstring)
 {
 	const char	*ptr;
 
-	if (g_optreset)
+	if (!g_optind || g_optreset)
 		getoptreset();
 	ptr = acav.argv[g_optind];
 	if (g_optind >= acav.argc || (ptr == acav.argv[g_optind] &&

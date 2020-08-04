@@ -33,8 +33,8 @@ typedef struct	s_option
 
 typedef struct	s_acav
 {
-	int			argc;
-	char*const	*argv;
+	const int			argc;
+	char*const*const	argv;
 }				t_acav;
 
 int				ft_getopt(const t_acav acav, const char *optstring);
