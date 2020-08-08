@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_string.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:56:55 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/06 02:55:12 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/08/03 15:24:16 by fhilary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ char	*ft_strstr(const char *haystack, const char *needle);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strccmp(const char *haystack, const char *needle, int c);
 /*
 ** Allocates (with ft_memalloc) and returns an array of “fresh” strings (all
 ** ending with ’\0’, including the array itself) obtained by spliting s using
@@ -92,4 +93,5 @@ char	**ft_strsplit_plus(char const *s, int (*cmp)(int));
 */
 char	*ft_strchr_plus(const char *s, int (*cmp)(int));
 void	ft_strup(char *tmp);
+
 #endif

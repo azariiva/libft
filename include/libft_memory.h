@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 18:21:51 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/29 17:54:54 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/08/08 18:45:56 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void			*ft_memchr(const void *s, int c, size_t n);
 ** strings are assumed to be n bytes long.
 */
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
+int				ft_memccmp(const void *haystack, const void *needle, int c,
+size_t n);
 /*
 ** The ft_bzero() function writes n zeroed bytes to the string s.  If n is zero,
 ** ft_bzero() does nothing.
