@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_getopt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 21:10:03 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/06 16:07:25 by fhilary          ###   ########.fr       */
+/*   Updated: 2020/08/08 18:42:01 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ const char **ptr)
 	else
 	{
 		if (++g_optind == acav.ac)
+		{
 			return (*opstring == ':' ? ':' :
 			getopt_msg(acav, *ptr - 1, REQUIRES_ARG));
+		}
 		g_optarg = (char *)acav.av[g_optind];
 		*ptr = acav.av[++g_optind];
 	}
