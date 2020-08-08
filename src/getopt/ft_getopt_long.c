@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/25 17:47:55 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/08 18:46:33 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/08/08 18:47:48 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ t_option*const longopts, int*const indexptr)
 {
 	char	*ptr;
 	int		i;
-	int		flag;
 
 	(!g_optind || g_optreset ? ft_getoptreset() : 0);
 	if (g_optind >= acav.ac || acav.av[g_optind][0] != '-' || (g_optarg = NULL))
@@ -98,7 +97,6 @@ t_option*const longopts, int*const indexptr)
 {
 	char	*ptr;
 	int		i;
-	int		flag;
 
 	(!g_optind || g_optreset ? ft_getoptreset() : 0);
 	if (g_optind >= acav.ac || acav.av[g_optind][0] != '-' || (g_optarg = NULL))
