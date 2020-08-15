@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 19:54:17 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/01 19:43:03 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/08/15 21:00:44 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ int	ft_isupper(int c);
 int	ft_isxdigit(int c);
 int	ft_toupper(int c);
 int	ft_tolower(int c);
+
+int	ft_strisnum(char *str);
 
 #endif
