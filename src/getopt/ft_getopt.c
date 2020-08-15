@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 21:10:03 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/08 18:42:01 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/08/15 20:52:17 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int				ft_getopt(const t_acav acav, const char *optstring)
 
 	if (g_optreset)
 		ft_getoptreset();
-	if (!ptr)
+	if (!ptr || ptr < acav.av[g_optind])
 		ptr = acav.av[g_optind];
 	else
 		ptr = (*ptr ? ptr : acav.av[++g_optind]);
