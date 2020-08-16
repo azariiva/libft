@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 19:54:17 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/15 21:00:44 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/08/16 15:01:50 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 # define LIBFT_CTYPE_H
 
+/*
+** TODO: Write descriptions
+*/
 int	ft_isalnum(int c);
 int	ft_isalpha(int c);
 int	ft_isascii(int c);
