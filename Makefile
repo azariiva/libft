@@ -6,7 +6,7 @@
 #    By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 17:37:07 by blinnea           #+#    #+#              #
-#    Updated: 2020/08/08 18:49:59 by blinnea          ###   ########.fr        #
+#    Updated: 2020/08/16 20:45:30 by blinnea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ GREENB = \033[42m
 #                               COMPILER OPTIONS                               #
 # **************************************************************************** #
 CC = clang
-CF = -Wall -Wextra -Werror -m64 -O3
+CF = -Wall -Wextra -Werror -m64 -ggdb -O3
 
 NAME = libft
 
@@ -44,6 +44,7 @@ FLT_H =		include/$(NAME)_float.h
 PFB_H =		include/$(NAME)_pfbuffer.h
 GOP_H =		include/$(NAME)_getopt.h
 DLST_H =	include/$(NAME)_dlist.h
+ALG_H =		include/$(NAME)_algo.h
 
 # **************************************************************************** #
 #                                 FILENAMES                                    #
@@ -61,6 +62,7 @@ PFBFILES =		$(shell find src/pfbuffer -name '*.c')
 PFFILES =		$(shell find src/printf -name '*.c')
 GOPFILES =		$(shell find src/getopt -name '*.c')
 DLSTFILES =		$(shell find src/dlist -name '*.c')
+ALGFILES =		$(shell find src/algo -name '*.c')
 
 LSTOFILES =		$(addprefix obj/, $(LSTFILES:src/list/%.c=%.o))
 STROFILES =		$(addprefix obj/, $(STRFILES:src/string/%.c=%.o))
@@ -75,10 +77,11 @@ PFBOFILES = 	$(addprefix obj/, $(PFBFILES:src/pfbuffer/%.c=%.o))
 PFOFILES =		$(addprefix obj/, $(PFFILES:src/printf/%.c=%.o))
 GOPOFILES =		$(addprefix obj/, $(GOPFILES:src/getopt/%.c=%.o))
 DLSTOFILES =	$(addprefix obj/, $(DLSTFILES:src/dlist/%.c=%.o))
+ALGOFILES =		$(addprefix obj/, $(ALGFILES:src/algo/%.c=%.o))
 
 ALLOFILES =		$(LSTOFILES) $(STROFILES) $(CTPOFILES) $(IOOFILES) $(QUEOFILES)\
 				$(MEMOFILES) $(INTOFILES) $(GNLOFILES) $(FLTOFILES)\
-				$(PFBOFILES) $(PFOFILES) $(GOPOFILES) $(DLSTOFILES)
+				$(PFBOFILES) $(PFOFILES) $(GOPOFILES) $(DLSTOFILES) $(ALGOFILES)
 
 .PHONY: dir clean fclean re all
 
@@ -155,6 +158,11 @@ obj/%.o: src/getopt/%.c $(STR_H) $(GOP_H)
 
 # create dlist object files
 obj/%.o: src/dlist/%.c $(FT_H) $(LST_H)
+	@$(CC) $(CF) -c $< -o $@ -I include
+	@echo "$(GREENB) $(DEFAULT)\c"
+
+# create dlist object files
+obj/%.o: src/algo/%.c $(ALG_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 

@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 16:09:17 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/16 16:49:54 by blinnea          ###   ########.fr       */
+/*   Created: 2020/08/16 16:31:29 by blinnea           #+#    #+#             */
+/*   Updated: 2020/08/16 20:16:36 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+#include "libft_algo.h"
+#include "libft_memory.h"
 
-# define LIBFT_H
+void	ft_swap(void *a, void *b, size_t esz)
+{
+	static void		*tmp;
+	static size_t	oesz;
 
-# include "libft_printf.h"
-# include "libft_get_next_line.h"
-# include "libft_io.h"
-# include "libft_queue.h"
-# include "libft_integer.h"
-# include "libft_list.h"
-# include "libft_string.h"
-# include "libft_memory.h"
-# include "libft_ctype.h"
-# include "libft_getopt.h"
-# include "libft_dlist.h"
-# include "libft_algo.h"
-
-#endif
+	if (esz == 0 && tmp)
+	{
+		ft_memdel(&tmp);
+		return ;
+	}
+	if (oesz != esz)
+	{
+		oesz = esz;
+		if (tmp)
+			ft_memdel(&tmp);
+		tmp = ft_memalloc(esz);
+	}
+	ft_memcpy(tmp, a, esz);
+	ft_memcpy(a, b, esz);
+	ft_memcpy(b, tmp, esz);
+}
