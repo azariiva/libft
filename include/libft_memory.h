@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_memory.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
+/*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 18:21:51 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/03 15:26:11 by fhilary          ###   ########.fr       */
+/*   Updated: 2020/08/08 18:45:56 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 # define LIBFT_MEMORY_H
 
 # include <stddef.h>
+
+typedef unsigned long int	t_op;
+
+# ifdef OPSIZ
+
+#  undef OPSIZ
+
+# endif
+
+# define OPSIZ (sizeof(t_op))
 
 /*
 ** The ft_memset() function writes len bytes of value c (converted to an
