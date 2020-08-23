@@ -6,14 +6,14 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 16:25:31 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/16 20:32:23 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/08/23 15:13:09 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_algo.h"
 
 static void	sort(char*const tab, const size_t esz, const long long lower,
-const long long upper, int (*cmp)(void *, void *))
+const long long upper, int (*cmp)(const void *, const void *))
 {
 	long long	i;
 	long long	j;
@@ -43,7 +43,7 @@ const long long upper, int (*cmp)(void *, void *))
 }
 
 void		ft_quicksort(char*const tab, const size_t esz, const size_t sz,
-int (*cmp)(void *, void *))
+int (*cmp)(const void *, const void *))
 {
 	sort(tab, esz, 0, (sz - 1) * esz, cmp);
 	ft_swap(NULL, NULL, 0);

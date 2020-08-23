@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 18:30:35 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/06 02:02:28 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/08/23 15:15:23 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ char			*ft_itoa(int n);
 int				ft_atoi(const char *str);
 char			*ft_lltoa(long long n);
 char			*ft_ulltoa_base(unsigned long long num, int base);
+int				ft_atou(char const *str);
 
 #endif

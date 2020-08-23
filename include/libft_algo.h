@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 15:11:02 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/17 19:09:40 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/08/23 15:12:39 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void			ft_swap(void *a, void *b, size_t esz);
 ** less than 0 if a < b or 0 if a == b
 */
 void			ft_quicksort(char*const tab, const size_t esz, const size_t sz,
-int (*cmp)(void *, void *));
+int (*cmp)(const void *, const void *));
 
 # define FT_QUICKSORT(tab, sz, cmp) (ft_quicksort((char *)tab, sizeof(*tab), sz, cmp))
 
