@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:11:24 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/17 16:56:11 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/11/01 13:54:09 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef struct	s_queue
 ** T is datatype
 ** q is queue
 */
-# define FT_QUETAIL(T, q) (FT_LSTCONT(T, q->tail))
-# define FT_QUEHEAD(T, q) (FT_LSTCONT(T, q->head))
+# define FT_QUETAIL(T, q) (FT_LSTCONT(T, (q)->tail))
+# define FT_QUEHEAD(T, q) (FT_LSTCONT(T, (q)->head))
 
 /*
 ** Allocates (with ft_memalloc) and returns a “fresh” queue. The head and tail
