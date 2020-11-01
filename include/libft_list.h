@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:39:42 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/16 15:07:39 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/11/01 13:49:58 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct	s_list
 ** T is datatype
 ** l is list
 */
-# define FT_LSTCONT(T, l) ((T *)(l->content))
+# define FT_LSTCONT(T, l) ((T *)((l)->content))
 
 /*
 ** Allocates (with ft_memalloc) and returns a “fresh” link. The variables
