@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_htable.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/17 16:57:49 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/17 19:09:28 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/11/03 17:52:11 by fhilary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void			ft_htdel(t_htable **ht, void (*del)(void *, size_t))
 			{
 				i = -1;
 				while (++i < (*ht)->size)
-					ft_quedel((*ht)->body + i, del);
+					ft_quedel_old((*ht)->body + i, del);
 			}
 			ft_memdel((void **)&((*ht)->body));
 		}
@@ -61,7 +61,8 @@ const size_t sz)
 		return (ERR);
 	if (!ht->body[hash])
 	{
-		if (!(ht->body[hash] = ft_quenew(tab, sz)))
+		if (!(ht->body[hash] = ft_quenew(NULL)) || \
+		ft_quevadd(ht->body[hash], tab, sz) == ERR)
 			return (ERR);
 	}
 	else if (!ht->cmp(ht->body[hash], tab))

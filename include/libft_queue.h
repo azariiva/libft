@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_queue.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fhilary <fhilary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:11:24 by blinnea           #+#    #+#             */
-/*   Updated: 2020/11/01 13:54:09 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/11/03 17:48:09 by fhilary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_queue
 {
 	t_list	*head;
 	t_list	*tail;
+	void	(*del)(void *, size_t);
 }				t_queue;
 
 /*
@@ -49,7 +50,7 @@ typedef struct	s_queue
 ** of queue is initialized to ft_lstnew(content, content_size)
 ** If the allocation fails, the function returns NULL.
 */
-t_queue			*ft_quenew(void const *content, size_t content_size);
+t_queue			*ft_quenew(void (*del)(void *, size_t));
 /*
 ** Adds element new to the end of queue.
 */
@@ -65,7 +66,9 @@ t_list			*ft_quepop(t_queue *queue);
 ** queue's head using the function ft_lstdel then frees the queue and sets
 ** recieved pointer to NULL.
 */
-void			ft_quedel(t_queue **queue, void (*del)(void *, size_t));
+void			ft_quedel(t_queue **queue);
+void			ft_quedel_old(t_queue **queue, void (*del)(void *, size_t));
+
 /*
 ** Checks if queue is empty.
 */
