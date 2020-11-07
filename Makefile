@@ -6,7 +6,7 @@
 #    By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/11 17:37:07 by blinnea           #+#    #+#              #
-#    Updated: 2020/08/17 18:13:11 by blinnea          ###   ########.fr        #
+#    Updated: 2020/11/07 17:12:09 by blinnea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ PFB_H =		include/$(NAME)_pfbuffer.h
 GOP_H =		include/$(NAME)_getopt.h
 DLST_H =	include/$(NAME)_dlist.h
 ALG_H =		include/$(NAME)_algo.h
+ELST_H =	include/$(NAME)_elist.h
 
 # **************************************************************************** #
 #                                 FILENAMES                                    #
@@ -63,6 +64,7 @@ PFFILES =		$(shell find src/printf -name '*.c')
 GOPFILES =		$(shell find src/getopt -name '*.c')
 DLSTFILES =		$(shell find src/dlist -name '*.c')
 ALGFILES =		$(shell find src/algo -name '*.c')
+ELSTFILES =		$(shell find src/elist -name '*.c')
 
 LSTOFILES =		$(addprefix obj/, $(LSTFILES:src/list/%.c=%.o))
 STROFILES =		$(addprefix obj/, $(STRFILES:src/string/%.c=%.o))
@@ -78,10 +80,12 @@ PFOFILES =		$(addprefix obj/, $(PFFILES:src/printf/%.c=%.o))
 GOPOFILES =		$(addprefix obj/, $(GOPFILES:src/getopt/%.c=%.o))
 DLSTOFILES =	$(addprefix obj/, $(DLSTFILES:src/dlist/%.c=%.o))
 ALGOFILES =		$(addprefix obj/, $(ALGFILES:src/algo/%.c=%.o))
+ELSTOFILES =	$(addprefix obj/, $(ELSTFILES:src/elist/%.c=%.o))
 
 ALLOFILES =		$(LSTOFILES) $(STROFILES) $(CTPOFILES) $(IOOFILES) $(QUEOFILES)\
 				$(MEMOFILES) $(INTOFILES) $(GNLOFILES) $(FLTOFILES)\
-				$(PFBOFILES) $(PFOFILES) $(GOPOFILES) $(DLSTOFILES) $(ALGOFILES)
+				$(PFBOFILES) $(PFOFILES) $(GOPOFILES) $(DLSTOFILES)\
+				$(ALGOFILES) $(ELSTOFILES)
 
 .PHONY: dir clean fclean re all
 
@@ -97,7 +101,7 @@ dir:
 	@mkdir -p obj
 
 # create list object files
-obj/%.o: src/list/%.c $(FT_H) $(LST_H)
+obj/%.o: src/list/%.c $(MEM_H) $(LST_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
@@ -157,12 +161,17 @@ obj/%.o: src/getopt/%.c $(STR_H) $(GOP_H)
 	@echo "$(GREENB) $(DEFAULT)\c"
 
 # create dlist object files
-obj/%.o: src/dlist/%.c $(FT_H) $(LST_H)
+obj/%.o: src/dlist/%.c $(MEM_H) $(DLST_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 
-# create dlist object files
+# create algo object files
 obj/%.o: src/algo/%.c $(ALG_H)
+	@$(CC) $(CF) -c $< -o $@ -I include
+	@echo "$(GREENB) $(DEFAULT)\c"
+
+# create elist object files
+obj/%.o: src/elist/%.c $(DLST_H) $(ELST_H)
 	@$(CC) $(CF) -c $< -o $@ -I include
 	@echo "$(GREENB) $(DEFAULT)\c"
 

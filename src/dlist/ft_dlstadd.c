@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 02:19:28 by blinnea           #+#    #+#             */
-/*   Updated: 2020/07/16 02:35:27 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/11/07 18:29:02 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_dlstadd(t_dlist **alst, t_dlist *new)
 		tmp = *alst;
 		*alst = new;
 		new->next = tmp;
-		tmp->prev = new;
+		if (tmp)
+			tmp->prev = new;
 	}
 }

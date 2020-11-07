@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 16:09:17 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/16 16:49:54 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/11/07 17:04:23 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@
 # include "libft_getopt.h"
 # include "libft_dlist.h"
 # include "libft_algo.h"
+# include "libft_elist.h"
 
 #endif

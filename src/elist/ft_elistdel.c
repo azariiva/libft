@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstdelone.c                                    :+:      :+:    :+:   */
+/*   ft_elistdel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/16 02:14:07 by blinnea           #+#    #+#             */
-/*   Updated: 2020/11/07 17:01:36 by blinnea          ###   ########.fr       */
+/*   Created: 2020/11/05 18:27:04 by blinnea           #+#    #+#             */
+/*   Updated: 2020/11/07 17:13:10 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_dlist.h"
+#include "libft_elist.h"
 #include "libft_memory.h"
-#include <stddef.h>
 
-void	ft_dlstdelone(t_dlist **alst, void (*del)(void *, size_t))
+void			ft_elistdel(t_elist **elist)
 {
-	if (!alst || !*alst || !del)
+	if (!elist || !*elist)
 		return ;
-	if ((*alst)->next)
-		(*alst)->next->prev = (*alst)->prev;
-	if ((*alst)->prev)
-		(*alst)->prev->next = (*alst)->next;
-	del((*alst)->content, (*alst)->content_size);
-	ft_memdel((void **)alst);
+	if ((*elist)->head)
+		ft_dlstdel(&((*elist)->head), (*elist)->del);
+	if ((*elist)->garbage)
+		ft_dlstdel(&((*elist)->garbage), (*elist)->del);
+	ft_memdel((void **)elist);
 }

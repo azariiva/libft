@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:11:24 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/17 16:56:11 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/11/05 17:49:08 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 # define LIBFT_QUEUE_H
 
-# include "libft_dlist.h"
 # include "libft_list.h"
 # include <stddef.h>
 
