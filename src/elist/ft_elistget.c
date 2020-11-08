@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_elistpop.c                                      :+:      :+:    :+:   */
+/*   ft_elistget.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/05 18:37:12 by blinnea           #+#    #+#             */
-/*   Updated: 2020/11/08 17:42:54 by blinnea          ###   ########.fr       */
+/*   Created: 2020/11/08 17:31:30 by blinnea           #+#    #+#             */
+/*   Updated: 2020/11/08 17:42:58 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_elist.h"
 
-void			ft_elistpoptop(t_elist *elist)
+void			*ft_elistbot(t_elist *elist)
 {
-	t_dlist	*popped;
+	t_dlist	*bot;
 
-	if (!(elist && (popped = elist->head)))
+	if (!(elist && (bot = elist->tail)))
 		return (NULL);
-	if (!(elist->head = elist->head->next))
-		elist->tail = NULL;
-	else
-		elist->head->prev = NULL;
-	ft_dlstdelone(&popped, elist->del);
+	return (bot->content);
 }
 
-void			ft_elistpopbot(t_elist *elist)
+void			*ft_elisttop(t_elist *elist)
 {
-	t_dlist	*popped;
+	t_dlist	*top;
 
-	if (!(elist && (popped = elist->tail)))
+	if (!(elist && (top = elist->head)))
 		return (NULL);
-	if (!(elist->tail = elist->tail->prev))
-		elist->head = NULL;
-	else
-		elist->tail->next = NULL;
-	ft_dlstdelone(&popped, elist->del);
+	return (top->content);
 }
