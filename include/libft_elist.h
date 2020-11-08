@@ -22,16 +22,16 @@
 ** user experience
 */
 
-# ifndef ERR
-#  define ERR (-1)
+# ifndef FT_ERR
+#  define FT_ERR (-1)
 # endif
 
-# ifndef OK
-#  define OK (0)
+# ifndef FT_OK
+#  define FT_OK (1)
 # endif
 
-# ifndef END
-#  define END (1)
+# ifndef FT_END
+#  define FT_END (0)
 # endif
 
 typedef struct	s_elist

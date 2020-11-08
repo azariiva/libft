@@ -58,17 +58,17 @@ const size_t sz)
 	unsigned long	hash;
 
 	if ((hash = ht->hash(tab, ht->size)) >= ht->size)
-		return (ERR);
+		return (FT_ERR);
 	if (!ht->body[hash])
 	{
 		if (!(ht->body[hash] = ft_quenew(tab, sz)))
-			return (ERR);
+			return (FT_ERR);
 	}
 	else if (!ht->cmp(ht->body[hash], tab))
-		return (END);
-	else if (ft_quevadd(ht->body[hash], tab, sz) == ERR)
-		return (ERR);
-	return (OK);
+		return (FT_END);
+	else if (ft_quevadd(ht->body[hash], tab, sz) == FT_ERR)
+		return (FT_ERR);
+	return (FT_OK);
 }
 
 void			*ft_htget(t_htable *ht, const void *tab)

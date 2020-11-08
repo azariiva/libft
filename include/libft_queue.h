@@ -18,16 +18,16 @@
 # include "libft_list.h"
 # include <stddef.h>
 
-# ifndef ERR
-#  define ERR (-1)
+# ifndef FT_ERR
+#  define FT_ERR (-1)
 # endif
 
-# ifndef OK
-#  define OK (0)
+# ifndef FT_OK
+#  define FT_OK (1)
 # endif
 
-# ifndef END
-#  define END (1)
+# ifndef FT_END
+#  define FT_END (0)
 # endif
 
 typedef struct	s_queue
@@ -50,7 +50,7 @@ typedef struct	s_queue
 */
 t_queue			*ft_quenew(void const *content, size_t content_size);
 /*
-** Adds element new to the end of queue.
+** Adds element new to the FT_END of queue.
 */
 int				ft_queadd(t_queue *queue, t_list *new);
 int				ft_quevadd(t_queue *queue, void const *content,

@@ -17,7 +17,7 @@ int	ft_elistpushtop(t_elist *elist, void *content)
 	t_dlist	*new;
 
 	if (!(elist && content && (new = ft_dlstnew(content, elist->content_size))))
-		return (ERR);
+		return (FT_ERR);
 	if (elist->head)
 	{
 		new->next = elist->head;
@@ -31,7 +31,7 @@ int	ft_elistpushtop(t_elist *elist, void *content)
 	}
 	if (!elist->tail)
 		elist->tail = elist->head;
-	return (OK);
+	return (FT_OK);
 }
 
 int	ft_elistpushbot(t_elist *elist, void *content)
@@ -39,7 +39,7 @@ int	ft_elistpushbot(t_elist *elist, void *content)
 	t_dlist	*new;
 
 	if (!(elist && content && (new = ft_dlstnew(content, elist->content_size))))
-		return (ERR);
+		return (FT_ERR);
 	if (elist->tail)
 	{
 		elist->tail->next = new;
@@ -51,5 +51,5 @@ int	ft_elistpushbot(t_elist *elist, void *content)
 		elist->tail = new;
 		elist->head = elist->tail;
 	}
-	return (OK);
+	return (FT_OK);
 }

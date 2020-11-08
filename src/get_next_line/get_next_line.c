@@ -58,7 +58,7 @@ static int	read_strlst(t_list *fdlst, t_list **strlst, char **line, \
 			if (*end_gnllloc && !(fdlst->content = ft_lstnew(end_gnllloc, \
 							sizeof(char) * (ptr->content_size - (end_gnllloc - \
 									(char *)ptr->content)))))
-				return (ERR);
+				return (FT_ERR);
 			ptr->content_size = end_gnllloc - (char *)ptr->content;
 			break ;
 		}
@@ -66,10 +66,10 @@ static int	read_strlst(t_list *fdlst, t_list **strlst, char **line, \
 			break ;
 		buff[len] = 0;
 		if (!(ptr->next = ft_lstnew(buff, sizeof(char) * (len + 1))))
-			return (ERR);
+			return (FT_ERR);
 		ptr = ptr->next;
 	}
-	return ((*line = list_to_str(strlst)) ? OK : ERR);
+	return ((*line = list_to_str(strlst)) ? FT_OK : FT_ERR);
 }
 
 static int	read_fdlst(t_list *fdlst, char **line)
@@ -82,13 +82,13 @@ static int	read_fdlst(t_list *fdlst, char **line)
 	if (!(strlst = (t_list *)fdlst->content))
 	{
 		if ((len = read(fdlst->content_size, buff, BUFF_SIZE)) <= 0)
-			return (len == 0 ? END : ERR);
+			return (len == 0 ? FT_END : FT_ERR);
 		buff[len] = 0;
 		if (!(strlst = ft_lstnew(buff, sizeof(char) * (len + 1))))
-			return (ERR);
+			return (FT_ERR);
 	}
 	fdlst->content = NULL;
-	if ((res = read_strlst(fdlst, &strlst, line, buff)) == ERR)
+	if ((res = read_strlst(fdlst, &strlst, line, buff)) == FT_ERR)
 		ft_lstdel(&strlst, gnl_strdel);
 	return (res);
 }
@@ -96,7 +96,7 @@ static int	read_fdlst(t_list *fdlst, char **line)
 int			lstdelandend(t_list **fdlst)
 {
 	ft_lstdel(fdlst, gnl_fddel);
-	return (END);
+	return (FT_END);
 }
 
 int			get_next_line(const int fd, char **line)
@@ -112,16 +112,16 @@ int			get_next_line(const int fd, char **line)
 	{
 		if (ptr->content_size == (size_t)fd)
 		{
-			if ((res = read_fdlst(ptr, line)) == ERR)
+			if ((res = read_fdlst(ptr, line)) == FT_ERR)
 				ptr->content = NULL;
 			return (res);
 		}
 		ptr = ptr->next;
 	}
 	if (!(ptr = ft_lstnew_ic(fd)))
-		return (ERR);
+		return (FT_ERR);
 	ft_lstadd(&fdlst, ptr);
-	if ((res = read_fdlst(fdlst, line)) == ERR)
+	if ((res = read_fdlst(fdlst, line)) == FT_ERR)
 		fdlst->content = NULL;
 	return (res);
 }

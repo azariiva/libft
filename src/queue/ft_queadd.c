@@ -15,7 +15,7 @@
 int	ft_queadd(t_queue *queue, t_list *new)
 {
 	if (!new || !queue)
-		return (ERR);
+		return (FT_ERR);
 	if (!queue->head)
 	{
 		queue->head = new;
@@ -26,5 +26,5 @@ int	ft_queadd(t_queue *queue, t_list *new)
 		queue->tail->next = new;
 		queue->tail = queue->tail->next;
 	}
-	return (OK);
+	return (FT_OK);
 }

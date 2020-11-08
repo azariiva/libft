@@ -17,6 +17,6 @@ int		ft_quevadd(t_queue *queue, void const *content, size_t content_size)
 {
 	if (!(ft_queadd(queue, content ? ft_lstnew(content, content_size)
 	: ft_lstnew_ic(content_size))))
-		return (ERR);
-	return (OK);
+		return (FT_ERR);
+	return (FT_OK);
 }

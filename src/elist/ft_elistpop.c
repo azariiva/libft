@@ -17,7 +17,7 @@ void			ft_elistpoptop(t_elist *elist)
 	t_dlist	*popped;
 
 	if (!(elist && (popped = elist->head)))
-		return (NULL);
+		return ;
 	if (!(elist->head = elist->head->next))
 		elist->tail = NULL;
 	else
@@ -30,7 +30,7 @@ void			ft_elistpopbot(t_elist *elist)
 	t_dlist	*popped;
 
 	if (!(elist && (popped = elist->tail)))
-		return (NULL);
+		return ;
 	if (!(elist->tail = elist->tail->prev))
 		elist->head = NULL;
 	else

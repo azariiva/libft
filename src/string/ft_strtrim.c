@@ -17,7 +17,7 @@
 char	*ft_strtrim(char const *s)
 {
 	char const	*start;
-	char		*end;
+	char		*FT_END;
 	size_t		len;
 
 	if (!s)
@@ -29,10 +29,10 @@ char	*ft_strtrim(char const *s)
 		len = 0;
 	else
 	{
-		end = (char *)s + ft_strlen(s) - 1;
-		while (ft_isspace(*end))
-			--end;
-		len = end - start + 1;
+		FT_END = (char *)s + ft_strlen(s) - 1;
+		while (ft_isspace(*FT_END))
+			--FT_END;
+		len = FT_END - start + 1;
 	}
 	return (ft_strsub(s, start - s, len));
 }

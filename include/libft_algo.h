@@ -58,8 +58,8 @@ unsigned long (*hash)(const void *, const size_t));
 
 void			ft_htdel(t_htable **ht, void (*del)(void *, size_t));
 /*
-** > returns ERR on internal error
-** > returns END if tab is already in the table
+** > returns FT_ERR on internal error
+** > returns FT_END if tab is already in the table
 */
 int				ft_htadd(t_htable *ht, const void *tab,
 const size_t sz);

@@ -29,15 +29,15 @@ static int	getoptint(char *ptr, t_option *longopts)
 }
 
 static int	getopt_msg(const t_acav acav, const char*const name,
-t_opterr err)
+t_opterr FT_ERR)
 {
-	if (err == REQUIRES_ARG)
+	if (FT_ERR == REQUIRES_ARG)
 		ft_printf_fd(STDERR_FILENO,
 		"%s: option `%s\' requires an argument\n", acav.av[0] + 2, name);
-	else if (err == DOESNT_ALLOW_ARG)
+	else if (FT_ERR == DOESNT_ALLOW_ARG)
 		ft_printf_fd(STDERR_FILENO,
 		"%s: option `%s\' doesn't allow an argument\n", acav.av[0] + 2, name);
-	else if (err == UNRECOGNIZED_OPTION)
+	else if (FT_ERR == UNRECOGNIZED_OPTION)
 		ft_printf_fd(STDERR_FILENO,
 		"%s: unrecognized option `%s\'\n", acav.av[0] + 2, name);
 	return ('?');

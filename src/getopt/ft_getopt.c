@@ -22,12 +22,12 @@ int			g_optind = 1;
 int			g_optreset = 1;
 
 static int		getopt_msg(const t_acav acav, const char*const name,
-t_opterr err)
+t_opterr FT_ERR)
 {
-	if (err == REQUIRES_ARG)
+	if (FT_ERR == REQUIRES_ARG)
 		ft_printf_fd(STDERR_FILENO,
 		"%s: option requires an argument -- %c\n", acav.av[0] + 2, name[0]);
-	else if (err == UNRECOGNIZED_OPTION)
+	else if (FT_ERR == UNRECOGNIZED_OPTION)
 		ft_printf_fd(STDERR_FILENO,
 		"%s: invalid option -- %c\n", acav.av[0] + 2, name[0]);
 	return ('?');
