@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:11:24 by blinnea           #+#    #+#             */
-/*   Updated: 2020/11/07 18:39:55 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/11/08 16:54:51 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@
 # include "libft_list.h"
 # include <stddef.h>
 
-# ifndef E_RCODE
+# ifndef ERR
+#  define ERR (-1)
+# endif
 
-#  define E_RCODE
+# ifndef OK
+#  define OK (0)
+# endif
 
-enum
-{
-	ERR = -1,
-	OK = 1,
-	END = 0
-};
-
+# ifndef END
+#  define END (1)
 # endif
 
 typedef struct	s_queue

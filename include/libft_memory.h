@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 18:21:51 by blinnea           #+#    #+#             */
-/*   Updated: 2020/08/08 18:45:56 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/11/08 16:07:06 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include <stddef.h>
 
-typedef unsigned long int	t_op;
+typedef unsigned long int	t_bl;
 
 # ifdef OPSIZ
 
@@ -24,7 +24,7 @@ typedef unsigned long int	t_op;
 
 # endif
 
-# define OPSIZ (sizeof(t_op))
+# define OPSIZ (sizeof(t_bl))
 
 /*
 ** The ft_memset() function writes len bytes of value c (converted to an

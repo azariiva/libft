@@ -6,7 +6,7 @@
 /*   By: blinnea <blinnea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 17:46:05 by blinnea           #+#    #+#             */
-/*   Updated: 2020/11/05 19:12:45 by blinnea          ###   ########.fr       */
+/*   Updated: 2020/11/08 16:54:44 by blinnea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,16 @@
 ** user experience
 */
 
-# ifndef E_RCODE
+# ifndef ERR
+#  define ERR (-1)
+# endif
 
-#  define E_RCODE
+# ifndef OK
+#  define OK (0)
+# endif
 
-enum
-{
-	ERR = -1,
-	OK = 1,
-	END = 0
-};
-
+# ifndef END
+#  define END (1)
 # endif
 
 typedef struct	s_elist
